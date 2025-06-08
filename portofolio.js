@@ -49,7 +49,7 @@ logo.addEventListener('mouseout', function() {
 
 // Ajouter un écouteur d'événement pour détecter le clic sur le texte du logo
 logo.addEventListener('click', function() {
-    // Si le texte en cours d'écriture est "Ouijdane Ayach", démarrer l'écriture de "Geomatics Engineer"
+    // Si le texte en cours d'écriture est "DAA-HINGBANON Jaurès", démarrer l'écriture de "Geomatien"
     if (newText === currentText) {
         resetWriting(); // Réinitialiser l'écriture en cours
         currentText = "Geomaticien";
