@@ -389,8 +389,8 @@ span{
     text-align: center;
     margin-bottom: 2rem;
     font-size: 60px;
-    -webkit-text-stroke: 1px #8e44ad;
-    text-shadow: 0 0 10px #9b59b6, 0 0 20px #34495e, 0 0 30px #2980b9, 0 0 40px #1abc9c, 0 0 50px #16a085, 0 0 60px #27ae60;
+    -webkit-text-stroke: 1px var(--main-color);
+    text-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 40px var(--main-color);
 }
 
 .service-info p {
@@ -518,8 +518,8 @@ span{
     text-align: center;
     margin-bottom: 2rem;
     font-size: 60px;
-    -webkit-text-stroke: 1px #8e44ad;
-    text-shadow: 0 0 10px #9b59b6, 0 0 20px #34495e, 0 0 30px #2980b9, 0 0 40px #1abc9c, 0 0 50px #16a085, 0 0 60px #27ae60;
+    -webkit-text-stroke: 1px var(--main-color);
+    text-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 40px var(--main-color);
 }
 
 .Portfolio-info p {
@@ -596,8 +596,8 @@ span{
     text-align: center;
     margin-bottom: 2rem;
     font-size: 60px;
-    -webkit-text-stroke: 1px #8e44ad;
-    text-shadow: 0 0 10px #9b59b6, 0 0 20px #34495e, 0 0 30px #2980b9, 0 0 40px #1abc9c, 0 0 50px #16a085, 0 0 60px #27ae60;
+    -webkit-text-stroke: 1px var(--main-color);
+    text-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 40px var(--main-color);
 }
 
 .formations-info p {
@@ -641,8 +641,8 @@ span{
     text-align: center; /* Centre le texte */
     margin-bottom: 2rem; /* Ajoute un espace en bas pour l'écart */
     font-size: 60px;
-    -webkit-text-stroke: 1px #8e44ad; /* Ajoute une bordure au texte */
-    text-shadow: 0 0 10px #9b59b6, 0 0 20px #34495e, 0 0 30px #2980b9, 0 0 40px #1abc9c, 0 0 50px #16a085, 0 0 60px #27ae60; /* Ajoute une ombre avec des couleurs */
+    -webkit-text-stroke: 1px var(--main-color);
+    text-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 40px var(--main-color);
 }
 
 
@@ -763,7 +763,8 @@ span{
     text-align: center; /* Centre le texte */
     margin-bottom: 2rem; /* Ajoute un espace en bas pour l'écart */
     font-size: 60px;
-    text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #ffffff, 0 0 70px #000000, 0 0 80px #ffffff, 0 0 100px #ffffff, 0 0 150px #11010f; /* Neon effect for text */
+    -webkit-text-stroke: 1px var(--main-color);
+    text-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 40px var(--main-color);
 }
 
 .education .right::after {
@@ -878,8 +879,8 @@ span{
     text-align: center; /* Centre le texte */
     margin-bottom: 2rem; /* Ajoute un espace en bas pour l'écart */
     font-size: 60px;
-    text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #ffffff, 0 0 70px #000000, 0 0 80px #ffffff, 0 0 100px #ffffff, 0 0 150px #11010f; /* Neon effect for text */
-    
+    -webkit-text-stroke: 1px var(--main-color);
+    text-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 40px var(--main-color);
 }
 
 .contact form{

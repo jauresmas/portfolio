@@ -138,6 +138,27 @@ if (!homeImgElement) {
 }
 
 
+// ===== MOBILE MENU TOGGLE =====
+const menuIcon = document.querySelector('#menu-icon');
+const navbar = document.querySelector('.navbar');
+
+if (menuIcon && navbar) {
+    menuIcon.addEventListener('click', function () {
+        navbar.classList.toggle('active');
+        menuIcon.classList.toggle('fa-bars');
+        menuIcon.classList.toggle('fa-xmark');
+    });
+
+    navbar.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            navbar.classList.remove('active');
+            menuIcon.classList.add('fa-bars');
+            menuIcon.classList.remove('fa-xmark');
+        });
+    });
+}
+
+
 /* ---- particles.js config ---- */
 
 particlesJS("particle-container", {
