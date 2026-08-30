@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Occupation du sol par télédétection (2000-2020) — Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Classification supervisée d'images Landsat 7 et 8 pour analyser l'évolution de l'occupation du sol entre 2000 et 2020 autour de Cherbourg-en-Cotentin.">
+    <link rel="stylesheet" href="../portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html#services" class="logo">Jaurès DAA-HINGBANON</a>
+        <nav class="navbar">
+            <a href="../index.html#services" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Géomatique, Limnologie, Environnement et Territoires · Université d'Orléans</p>
+            <h1>Occupation du sol par télédétection (2000-2020)</h1>
+            <p class="project-subtitle">Analyse spatio-temporelle autour de Cherbourg-en-Cotentin à partir d'images Landsat</p>
+        </div>
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>L'occupation du sol est un indicateur clé des dynamiques territoriales et de leurs impacts sur la biodiversité et les ressources naturelles. Ce travail analyse, par télédétection, l'évolution de l'occupation du sol entre 2000 et 2020 sur une zone de 20 km à l'est et 15 km au sud de Cherbourg-en-Cotentin (Normandie), un territoire mêlant terres agricoles, espaces naturels et zones urbanisées, afin de quantifier et d'expliquer les changements observés sur deux décennies.</p>
+        </div>
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>L'étude s'appuie sur des images Landsat 7 (capteur ETM+) et Landsat 8 (capteurs OLI/TIRS) téléchargées via USGS EarthExplorer, découpées sous QGIS sur la zone d'étude délimitée avec Google Earth Pro, puis ré-échantillonnées de 30 à 15 m de résolution. Après fusion des bandes et composition colorée, une classification supervisée par maximum de vraisemblance a permis de distinguer six classes d'occupation (eau, urbain, sol nu, forêt, prairie, terre agricole), à partir d'échantillons d'entraînement. La fiabilité des classifications de 2000 et 2020 a été vérifiée par matrice de confusion avant l'analyse comparative des deux dates.</p>
+        </div>
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>Entre 2000 et 2020, les terres agricoles reculent de 59 % à 49 % de la surface (2 191 à 1 792 km²), tandis que la forêt progresse fortement de 14 % à 34 % (517 à 1 250 km²), signe probable d'une reforestation ou d'un abandon de terres agricoles. Les zones urbaines augmentent modérément, de 7 % à 8 % (263 à 283 km²), concentrées autour de Cherbourg-en-Cotentin, pendant que les prairies chutent nettement de 19 % à 7 % (717 à 272 km²), probablement converties en terres agricoles ou urbanisées. Les sols nus doublent (1 % à 2 %) et les zones d'eau restent marginales et stables sur toute la période, illustrant un territoire en transition entre pression urbaine, dynamiques agricoles et reforestation.</p>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/teledetection-occupation-sol-2000.jpg" alt="Carte de classification de l'occupation du sol en 2000, issue d'images Landsat 7" class="portfolio-image">
+                <figcaption>Occupation du sol en 2000 (Landsat 7)</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/teledetection-occupation-sol-2020.jpg" alt="Carte de classification de l'occupation du sol en 2020, issue d'images Landsat 8" class="portfolio-image">
+                <figcaption>Occupation du sol en 2020 (Landsat 8)</figcaption>
+            </figure>
+        </div>
+
+        <a href="../index.html#services" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaures-d-m-daa-hingbanon/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet académique — Master GLET, Université d'Orléans.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../particles.min.js"></script>
+    <script src="../portofolio.js"></script>
+</body>
+</html>

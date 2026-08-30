@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartographie web des îlots de chaleur avec Mapbender — Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Projet tutoré sur le webmapping : état de l'art des outils de cartographie en ligne et mise en pratique avec GeoServer et Mapbender sur la carte des îlots de chaleur d'Orléans Métropole.">
+    <link rel="stylesheet" href="../portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html#services" class="logo">Jaurès DAA-HINGBANON</a>
+        <nav class="navbar">
+            <a href="../index.html#services" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Géographie · Université d'Orléans · Projet Tutoré · Le Webmapping : définition, utilité et outils</p>
+            <h1>Cartographie web des îlots de chaleur avec Mapbender</h1>
+            <p class="project-subtitle">Mise en ligne d'une carte interactive avec GeoServer et Mapbender</p>
+        </div>
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Le webmapping — la diffusion et la visualisation de données géographiques via un navigateur web — s'est imposé comme un outil incontournable pour rendre l'information géographique accessible au grand public, en particulier lorsqu'un phénomène évolue en continu ou couvre une zone trop vaste pour une carte statique. Ce projet tutoré vise à définir le webmapping, à recenser ses outils (serveurs cartographiques, bases de données spatiales, logiciels de diffusion) et à identifier, à travers un cas pratique, la solution la mieux adaptée pour permettre à des élus locaux de diffuser des cartes auprès de la population d'Orléans Métropole.</p>
+        </div>
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>Après une revue de la littérature sur l'architecture client/serveur du webmapping (module géodatabase PostgreSQL/PostGIS, module SIG, module SIG Web), le projet met en œuvre une chaîne complète en logiciels libres : les couches SIG (ici, une carte des îlots de chaleur urbains) sont chargées et stylées dans GeoServer, qui les publie en flux WMS/WFS. Ces flux sont ensuite importés dans Mapbender, une application open source de création de géoportails, pour construire une application web complète (mise en page, légende, outils de navigation) consultable directement depuis un navigateur.</p>
+        </div>
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>Le projet aboutit à une application webmapping fonctionnelle diffusant la carte des îlots de chaleur d'Orléans Métropole, avec légende interactive, échelle et fond de plan. La comparaison des outils étudiés (GoogleEngine, LizMap, Mapbender) confirme Mapbender comme solution particulièrement adaptée : son caractère open source et l'abondance de tutoriels en ligne en facilitent la prise en main, tout en offrant les trois briques indispensables à tout webmapping — base de données, serveur cartographique et application web SIG.</p>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/webmapping-geoserver-ilot-chaleur.jpg" alt="Prévisualisation de la couche des îlots de chaleur d'Orléans Métropole en flux WMS depuis GeoServer" class="portfolio-image">
+                <figcaption>Flux WMS de la couche îlots de chaleur (GeoServer)</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/webmapping-mapbender-interface.jpg" alt="Application webmapping finale sous Mapbender diffusant la carte des îlots de chaleur d'Orléans Métropole" class="portfolio-image">
+                <figcaption>Application webmapping finale (Mapbender)</figcaption>
+            </figure>
+        </div>
+
+        <a href="../index.html#services" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaures-d-m-daa-hingbanon/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet académique — Université d'Orléans.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../particles.min.js"></script>
+    <script src="../portofolio.js"></script>
+</body>
+</html>

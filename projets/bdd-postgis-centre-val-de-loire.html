@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de données PostgreSQL/PostGIS des limites administratives — Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Création et structuration d'une base de données PostgreSQL/PostGIS pour la gestion sécurisée des limites administratives de la BD TOPO en région Centre-Val de Loire.">
+    <link rel="stylesheet" href="../portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html#services" class="logo">Jaurès DAA-HINGBANON</a>
+        <nav class="navbar">
+            <a href="../index.html#services" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Géomatique, Limnologie, Environnement et Territoires · Université d'Orléans · 2024-2025 · UE Base de Données</p>
+            <h1>Base de données PostgreSQL/PostGIS des limites administratives</h1>
+            <p class="project-subtitle">Structuration et sécurisation d'une base spatiale pour la Région Centre-Val de Loire</p>
+        </div>
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>L'objectif de ce travail est d'intégrer les limites administratives de la BD TOPO (IGN) de la région Centre-Val de Loire dans un Système de Gestion de Base de Données Géospatiales (SGBD-G) PostgreSQL/PostGIS, afin de disposer d'une base robuste, intègre et interrogeable par requêtes géométriques, tout en garantissant une gestion sécurisée des accès (utilisateurs, groupes, permissions).</p>
+        </div>
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>Les données ont été téléchargées au format Shapefile sur le portail Géoservices de l'IGN, puis vérifiées sous QGIS. Une base de données PostgreSQL dédiée (BD_LIMITES) a été créée et dotée de l'extension PostGIS, avant l'importation des shapefiles via l'outil PostGIS Shapefile Import/Export Manager. La structuration de la base s'est ensuite appuyée sur des instructions SQL reproductibles : filtrage des données, renommage des tables et identifiants, conversion des types de champs, ajout de clés étrangères et de contraintes d'intégrité référentielle. La sécurité de l'accès a été assurée par la création de rôles, de groupes et d'utilisateurs, avec des permissions différenciées, y compris des permissions par défaut appliquées automatiquement aux futures tables.</p>
+        </div>
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>Le projet aboutit à une base de données spatiale structurée et sécurisée pour les limites administratives communales de la région Centre-Val de Loire, avec des tables normalisées, des contraintes d'intégrité garantissant la cohérence des données, et une gestion centralisée mais flexible des droits d'accès. Ce travail illustre une approche méthodique de l'administration de bases de données géospatiales, directement réutilisable pour d'autres projets d'analyse territoriale.</p>
+        </div>
+
+
+        <a href="../index.html#services" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaures-d-m-daa-hingbanon/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet académique — Master GLET, Université d'Orléans.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../particles.min.js"></script>
+    <script src="../portofolio.js"></script>
+</body>
+</html>

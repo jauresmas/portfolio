@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géohistoire des plans d'eau en France (1750-2020) — Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Cartographie SIG de l'évolution de la densité et de la stagnucité des étangs dans 91 départements français, de 1750 à 2020.">
+    <link rel="stylesheet" href="../portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html#services" class="logo">Jaurès DAA-HINGBANON</a>
+        <nav class="navbar">
+            <a href="../index.html#services" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Géomatique, Limnologie, Environnement et Territoire · Université d'Orléans · 2022-2023 · SIG et géohistoire des lacs et zones humides</p>
+            <h1>Géohistoire des plans d'eau en France (1750-2020)</h1>
+            <p class="project-subtitle">Étude géohistorique de l'évolution des étangs dans les départements français</p>
+        </div>
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>La géohistoire des lacs étudie l'évolution des plans d'eau dans le temps en croisant facteurs géographiques, historiques et sociaux. Depuis 1750, les étangs français ont connu des créations massives à l'époque industrielle, puis des disparitions liées à l'urbanisation, avant une prise de conscience environnementale plus récente favorisant leur restauration. L'objectif de ce travail est d'analyser, à l'aide d'un SIG, l'évolution des étangs de 91 départements français entre 1750 et 2020, à travers deux indicateurs : leur densité et leur stagnucité (rapport entre la surface totale des étangs et la superficie du département).</p>
+        </div>
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>Les données mobilisées proviennent de sources historiques (carte de Cassini de 1750, carte napoléonienne de 1834, données de Rougier de la Bergerie) et contemporaines (BD TOPO IGN 2020, base Ecrins de l'Agence européenne de l'environnement). Après jointure des tableaux statistiques à la couche départementale sous QGIS, la méthode de discrétisation de Jenks (rupture naturelle des classes) a été appliquée pour cartographier la densité et la stagnucité des étangs à plusieurs dates (1750, 1830, 1793, 1834, 2020), ainsi que leur évolution. Les cartes de densité et de stagnucité ont ensuite été croisées pour produire une carte de trajectoire paysagère, classant chaque département selon 11 profils d'évolution regroupés en trois grandes tendances.</p>
+        </div>
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>La répartition des étangs reste très inégale sur le territoire. Dès 1750, quatre départements se distinguent par une très forte densité (Charente-Maritime, Hauts-de-Seine, Territoire de Belfort, Ain), tandis que le sud du pays reste structurellement pauvre en étangs, pour des raisons géologiques. La synthèse en trajectoires paysagères types oppose des départements à très forte densité dès 1750 restée peu dynamique par la suite (Ain, Territoire de Belfort, Charente-Maritime), des départements à densité initialement moyenne ayant connu une évolution très forte entre 1750 et 1830 puis une forte stagnucité par la suite, comme la Vendée et la Loire-Atlantique (logique économique et de loisir), et des départements à faible densité structurelle peu dynamique sur toute la période, majoritairement situés au sud. Ces trajectoires reflètent l'articulation entre contraintes géologiques, décisions politiques et usages économiques de l'eau au fil de trois siècles.</p>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/geohistoire-densite-1750-2020.jpg" alt="Carte de l'évolution de la densité des étangs dans les départements français entre 1750 et 2020" class="portfolio-image">
+                <figcaption>Évolution de la densité des étangs, 1750-2020</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/geohistoire-trajectoire-paysagere.jpg" alt="Carte de synthèse de la trajectoire paysagère des étangs français, combinant densité et stagnucité" class="portfolio-image">
+                <figcaption>Trajectoire paysagère des étangs, 1750-2020</figcaption>
+            </figure>
+        </div>
+
+        <a href="../index.html#services" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaures-d-m-daa-hingbanon/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet académique — Master GLET, Université d'Orléans.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../particles.min.js"></script>
+    <script src="../portofolio.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonctionnement thermique estival du Grand Étang de Cieux — Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Analyse géomatique et limnologique de la stratification thermique du Grand Étang de Cieux (Haute-Vienne) durant l'été 1999.">
+    <link rel="stylesheet" href="../portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html#services" class="logo">Jaurès DAA-HINGBANON</a>
+        <nav class="navbar">
+            <a href="../index.html#services" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Géomatique, Limnologie, Environnement et Territoire · Université d'Orléans · 2022-2023 · Recherche en Limnologie physique</p>
+            <h1>Fonctionnement thermique estival du Grand Étang de Cieux</h1>
+            <p class="project-subtitle">Stratification et évolution de la thermocline, juillet-août 1999</p>
+        </div>
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Le Grand Étang de Cieux (43 ha), situé en Haute-Vienne (Nouvelle-Aquitaine), est un plan d'eau ancien considéré comme un hotspot de biodiversité mais soumis à des pressions croissantes (sur-fréquentation, eutrophisation). Face à l'influence avérée du changement climatique sur le fonctionnement thermique des plans d'eau, l'objectif est de comprendre la dynamique de stratification de l'étang à partir de mesures de température prises entre juillet et août 1999, une étape jugée nécessaire avant toute comparaison avec la situation actuelle.</p>
+        </div>
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>Le travail combine trois approches. Une approche géographique caractérise le cadre physique du bassin versant (hydrologie, climat, relief du département de Haute-Vienne). Une approche géomatique produit sous QGIS une carte du bassin versant, une carte des pentes et une carte de température de surface (LST) à partir d'un Modèle Numérique de Terrain (SRTM) et d'images satellite Landsat. Enfin, une approche limnologique sélectionne 4 journées représentatives (les plus chaudes et les plus fraîches de juillet et août, identifiées par calcul de variance des écarts de température) puis analyse les profils thermiques verticaux de l'étang à trois moments de la journée (00h, 8h, 17h).</p>
+        </div>
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>Entre juillet et août 1999, la température de surface du bassin versant varie de 20 à 32 °C, avec des îlots de chaleur dispersés. Les profils thermiques verticaux montrent majoritairement une stratification directe, de forme convexo-concave, avec une thermocline dont la profondeur varie selon les jours — repoussée au fond lors des journées les plus chaudes, plus proche de la surface en fin d'après-midi. Les journées les plus fraîches tendent vers l'homothermie, synonyme de brassage de la colonne d'eau et donc favorable à l'oxygénation du plan d'eau, dont l'état général apparaît satisfaisant sur la période étudiée.</p>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/grand-etang-cieux-pentes.jpg" alt="Carte des pentes du bassin versant de l'étang de Cieux, réalisée sous QGIS à partir d'un MNT SRTM" class="portfolio-image">
+                <figcaption>Pentes du bassin versant (SRTM, QGIS)</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/grand-etang-cieux-lst.jpg" alt="Carte de température de surface terrestre (LST) du bassin versant de Cieux entre juillet et août 1999" class="portfolio-image">
+                <figcaption>Température de surface terrestre, été 1999 (Landsat)</figcaption>
+            </figure>
+        </div>
+
+        <a href="../index.html#services" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaures-d-m-daa-hingbanon/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet académique — Master GLET, Université d'Orléans.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../particles.min.js"></script>
+    <script src="../portofolio.js"></script>
+</body>
+</html>

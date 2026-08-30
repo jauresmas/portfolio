@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indicateurs d'empreinte et limnorégions à l'échelle européenne — Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Cartographie des indicateurs de densité, limnicité, stagnucité et marucité des plans d'eau à l'échelle de l'Europe centrale et du Nord, pour délimiter des limnorégions.">
+    <link rel="stylesheet" href="../portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html#services" class="logo">Jaurès DAA-HINGBANON</a>
+        <nav class="navbar">
+            <a href="../index.html#services" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Géomatique, Limnologie, Environnement et Territoires · Université d'Orléans</p>
+            <h1>Indicateurs d'empreinte et limnorégions à l'échelle européenne</h1>
+            <p class="project-subtitle">Adapter les politiques de gestion des plans d'eau selon leurs indicateurs spécifiques</p>
+        </div>
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Lacs, étangs et mares rendent des services écologiques essentiels (régulation des inondations, biodiversité, purification de l'eau) mais fonctionnent de façon très différente selon les territoires. L'objectif de ce travail est de cartographier des indicateurs d'empreinte des plans d'eau — densité, limnicité, limnicité étendue, stagnucité (étangs) et marucité (mares) — sur un vaste territoire couvrant l'Europe de l'Est (Biélorussie, Lettonie, Lituanie), l'Europe centrale (Allemagne, Autriche, Slovaquie, Pologne, Tchéquie) et le Danemark, afin d'en déduire des limnorégions et d'orienter des politiques de gestion adaptées à chacune.</p>
+        </div>
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>À partir des données de la base Ecrins de l'Agence européenne pour l'environnement et d'OpenStreetMap, les couches de lacs, étangs et mares ont été fusionnées puis croisées avec les limites administratives sous QGIS, avec ajustement des superficies pour les plans d'eau à cheval sur plusieurs régions. Pour chaque type de plan d'eau, les indicateurs de densité et de part de surface occupée (limnicité, stagnucité, marucité) ont été calculés puis cartographiés selon une discrétisation en cinq classes (très faible à très forte). Le croisement de l'ensemble de ces cartes a permis de délimiter des limnorégions homogènes, caractérisées par la dominance d'un type de plan d'eau et d'un niveau d'empreinte.</p>
+        </div>
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>Cinq limnorégions se dégagent : le Nord-Est (Lituanie, Lettonie, nord de la Pologne et partie de la Biélorussie — densité très élevée de lacs d'origine glaciaire, occupant des cuvettes creusées par d'anciens reliefs glaciaires), le Nord-Centre (Pologne et partie de l'Allemagne — forte densité et limnicité de lacs d'origine tectonique ou glaciaire, empreinte marquée), le Sud-Centre (Tchéquie, Allemagne, Autriche, Pologne : forte densité de mares et étangs liée à des sols argileux et à l'élevage piscicole ancien), le Nord-Ouest (Danemark et partie de l'Allemagne : forte empreinte des étangs et mares d'origine agricole) et le Sud-Ouest (sud de l'Allemagne et régions adjacentes : densité et limnicité modérées, mais empreinte notable des mares et étangs, habitats clés pour les amphibiens et oiseaux aquatiques). Cette typologie plaide pour une gestion différenciée : conservation et régulation hydrique face aux pressions anthropiques dans les régions à forte densité de lacs, restauration des habitats et pratiques agricoles durables dans les régions à mares et étangs, dans une logique de gestion intégrée des ressources en eau à l'échelle transfrontalière.</p>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/plan-eau-territoire-zone-etude.jpg" alt="Carte de subdivision géographique de la zone d'étude : Europe de l'Est, Europe centrale et Europe du Nord" class="portfolio-image">
+                <figcaption>Subdivision géographique de la zone d'étude</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/plan-eau-territoire-limnoregions.jpg" alt="Carte de synthèse présentant les cinq limnorégions identifiées à partir des indicateurs d'empreinte des plans d'eau" class="portfolio-image">
+                <figcaption>Carte de synthèse des limnorégions</figcaption>
+            </figure>
+        </div>
+
+        <a href="../index.html#services" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaures-d-m-daa-hingbanon/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet académique — Master GLET, Université d'Orléans.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../particles.min.js"></script>
+    <script src="../portofolio.js"></script>
+</body>
+</html>
