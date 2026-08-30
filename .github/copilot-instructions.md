@@ -23,9 +23,9 @@ Cet est un portfolio web responsif monopage (SPA) en pur HTML/CSS/JavaScript, pr
 
 ### Fichiers clés
 - `index.html` - Structure monolithique de 404 lignes
-- `portofolio.css` - Styles 1055 lignes avec custom properties :root
-- `portofolio.js` - 234 lignes, gère animations logo/image + config particles.js
-- `particles.min.js` - Librairie externe (non modifiée)
+- `code/portofolio.css` - Styles avec custom properties :root
+- `code/portofolio.js` - Gère animations logo/image + config particles.js
+- `code/particles.min.js` - Librairie externe (non modifiée)
 
 ## Patterns et conventions
 

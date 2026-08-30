@@ -118,7 +118,7 @@ if (!homeImgElement) {
 } else {
     // Stocker le chemin d'accès de l'image actuelle
     const defaultImage = homeImgElement.src;
-    const hoverImage = "home2.jpg";
+    const hoverImage = "img/home2.jpg";
 
     // Fonction pour changer l'image au survol
     function changeImage() {

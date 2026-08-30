@@ -92,7 +92,7 @@ Site monopage (SPA) responsive présentant :
 ## Détails techniques
 
 - Frontend : HTML5, CSS3 (variables, media queries), JavaScript vanilla
-- Librairies : `particles.min.js`, Font Awesome 6.5.2, Google Fonts
+- Librairies : `code/particles.min.js`, Font Awesome 6.5.2, Google Fonts
 - Contact : Formspree (formulaire POST vers `https://formspree.io/f/xeoyzwrk`)
 - Hébergement : GitHub Pages (URL ci-dessus)
 
@@ -119,9 +119,9 @@ python3 -m http.server 8000
 ## Emplacement des changements clés
 
 - `index.html` : structure HTML, `alt` améliorés, formulaire configuré
-- `portofolio.css` : styles, responsive fixes, lightbox CSS
-- `portofolio.js` : animations, particles config, AJAX pour contact, lightbox logic
-- `img/` : images (certaines renommées pour compatibilité)
+- `code/portofolio.css` : styles, responsive fixes, lightbox CSS
+- `code/portofolio.js` : animations, particles config, AJAX pour contact, lightbox logic
+- `img/` : images et documents (certificats, logos, CV)
 
 ## Tests et vérifications réalisés
 
