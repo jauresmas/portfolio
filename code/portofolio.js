@@ -116,7 +116,7 @@ const homeImgElement = document.querySelector('.home-img img');
 if (!homeImgElement) {
     console.warn('Home image element not found');
 } else {
-    const slideshowImages = ["img/home4.jpg", "img/home2.jpg", "img/home3.jpg"];
+    const slideshowImages = ["img/home3.jpg", "img/home4.jpg", "img/home2.jpg"];
     let slideIndex = 0;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
