@@ -10,7 +10,7 @@ Portfolio web interactif mettant en avant mes projets en géomatique, SIG et té
 
 ## À propos
 
-Portfolio responsif monopage (SPA) présentant :
+Portfolio responsif multi-pages (`index.html`, `projets.html`, `portfolio.html`, `competences.html`, `certificats.html`, `formations.html`, `contact.html`) présentant :
 
 - **Projets** : 17 projets géomatiques (stages, projets académiques, ArcGIS Online, QGIS, webmapping, etc.)
 - **Portfolio** : 15 cartes et analyses géospatiales (LST, NDVI, bassins versants, limnorégions, etc.)
@@ -29,10 +29,16 @@ Portfolio responsif monopage (SPA) présentant :
 ## Structure du dépôt
 
 ```
-index.html            Page d'accueil (sections Projets, Portfolio, Compétences, Certificats, Formations, Contact)
-projets/               Pages détaillées d'un projet chacune
-code/                  portofolio.css, portofolio.js, particles.min.js
-img/                   Images, captures de cartes, certificats et CV
+index.html             Page d'accueil (hero seul)
+projets.html            Section Projets
+portfolio.html          Section Portfolio
+competences.html        Section Compétences
+certificats.html        Section Certificats
+formations.html         Section Formations
+contact.html            Formulaire de contact
+projets/                Pages détaillées d'un projet chacune
+code/                   portofolio.css, portofolio.js, particles.min.js
+img/                    Images, captures de cartes, certificats et CV
 ```
 
 ## Responsive

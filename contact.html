@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaurès DAA-HINGBANON | Géomaticien</title>
-    <meta name="description" content="Portfolio de Jaurès DAA-HINGBANON, géomaticien spécialisé en analyse spatiale, cartographie et hydrologie.">
+    <title>Contact | Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Contactez Jaurès DAA-HINGBANON, géomaticien spécialisé en analyse spatiale et cartographie.">
     <link rel="stylesheet" href="code/portofolio.css">
     <!--Font awesome import-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -28,26 +28,27 @@
         </nav>
     </header>
 
-<section class="home" id="home">
-    <div class="home-img">
-        <img src="img/home4.jpg" alt="Portrait professionnel de Jaurès, géomaticien spécialisé en analyse spatiale et cartographie">
-    </div>
-    <div class="home-content">
-        <h1>Bonjour, c'est <span>Jaurès</span></h1>
-        <h3 class="typing-text">Je suis <span></span></h3>
-        <p>Géomaticien passionné par l'analyse spatiale et la cartographie des enjeux environnementaux. De l'automatisation de chaînes de traitement FME à la gestion de bases PostGIS en passant par le webmapping, je transforme la donnée géospatiale en outils d'aide à la décision. Une spécialisation particulière en hydrologie et zones humides, nourrie par mon parcours au Bénin et en France.</p>
-        <div class="social-icon">
-            <a href="https://www.linkedin.com/in/jaures-d-m-daa-hingbanon/" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-github"></i>
-            </a>       
-            <a href="img/Geomaticien.pdf" class="cv-btn" target="_blank" rel="noopener noreferrer">MON CV</a>   
-        </div>
-        <a href="contact.html" class="btn">Contactez moi</a>
-    </div> 
-</section>
+<section class="contact" id="contact">
+        <h2 class="heading">Contactez <span>moi</span></h2>
+        <!-- Formulaire prêt pour Formspree (remplacez l'ID dans action par votre ID réel) -->
+        <form id="contactForm" method="POST" action="https://formspree.io/f/xeoyzwrk">
+            <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+            <input type="hidden" name="_next" value="https://jauresmas.github.io/portfolio/?submitted=1">
+            <!-- Honeypot anti-spam (laisser vide) -->
+            <input type="text" name="_gotcha" id="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+            <div class="input-box">
+                <input type="text" name="name" placeholder="Nom" required>
+                <input type="email" name="_replyto" placeholder="Email" required>
+                <input type="tel" name="phone" placeholder="Téléphone">
+                <input type="text" name="subject" placeholder="Sujet">
+            </div>
+
+            <textarea name="message" id="message" cols="30" rows="10" placeholder="Votre Message" required></textarea>
+            <input type="submit" value="Envoyer" class="btn">
+            <div id="formStatus" aria-live="polite" style="margin-top:12px;color:var(--text-color)"></div>
+        </form>
+    </section>
 
     <footer class="footer">
         <div class="social">
