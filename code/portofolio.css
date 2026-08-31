@@ -115,17 +115,12 @@ body{
 
 section{
     min-height: 100vh;
-    padding: 5rem 9% 5rem;
+    padding: 13rem 9% 5rem;
 }
 
 /* Ajustement d'espacement entre sections spécifiques */
-/* Réduit l'écart vertical entre la section Compétences et Certificats */
 .skills {
-    padding-bottom: 1rem; /* réduit davantage l'espace sous Compétences */
-}
-
-.formations {
-    padding-top: 0.5rem; /* réduit davantage l'espace au dessus des Certificats */
+    padding-bottom: 1rem;
 }
 
 .home{
@@ -133,11 +128,11 @@ section{
     justify-content: center;
     align-items: center;
     gap:8rem;
-    padding-top: 11rem;
+    padding-top: 13rem;
 }
 
 .home .home-content h1{
-    font-size: 4.5rem;
+    font-size: 5rem;
     font-weight: 700;
     line-height: 1.3;
 }
@@ -169,7 +164,7 @@ span{
 }
 
 .home-content p{
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     line-height: 1.6;
     font-weight: 500;
     text-align: justify;
@@ -1195,9 +1190,6 @@ footer .copyright{
 @media(max-width: 995px) {
     .skills {
         padding-bottom: 0.5rem;
-    }
-    .formations {
-        padding-top: 0.5rem;
     }
 }
 
