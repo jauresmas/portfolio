@@ -110,31 +110,26 @@ if (!typingTextTarget) {
 }
 
 
-// ===== IMAGE SWAP MODULE =====
+// ===== HOME IMAGE SLIDESHOW MODULE =====
 const homeImgElement = document.querySelector('.home-img img');
 
 if (!homeImgElement) {
     console.warn('Home image element not found');
 } else {
-    // Stocker le chemin d'accès de l'image actuelle
-    const defaultImage = homeImgElement.src;
-    const hoverImage = "img/home2.jpg";
+    const slideshowImages = ["img/home4.jpg", "img/home2.jpg", "img/home3.jpg"];
+    let slideIndex = 0;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Fonction pour changer l'image au survol
-    function changeImage() {
-        homeImgElement.src = hoverImage;
+    if (!prefersReducedMotion) {
+        setInterval(function () {
+            slideIndex = (slideIndex + 1) % slideshowImages.length;
+            homeImgElement.style.opacity = '0';
+            setTimeout(function () {
+                homeImgElement.src = slideshowImages[slideIndex];
+                homeImgElement.style.opacity = '1';
+            }, 400);
+        }, 4000);
     }
-
-    // Fonction pour restaurer l'image d'origine
-    function restoreImage() {
-        homeImgElement.src = defaultImage;
-    }
-
-    // Ajouter un écouteur d'événement pour détecter le survol de l'image
-    homeImgElement.addEventListener('mouseover', changeImage);
-
-    // Ajouter un écouteur d'événement pour détecter la sortie du survol de l'image
-    homeImgElement.addEventListener('mouseout', restoreImage);
 }
 
 
