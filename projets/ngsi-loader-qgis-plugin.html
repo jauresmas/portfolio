@@ -45,6 +45,13 @@
             <p>Les standards NGSI v2 et NGSI-LD (FIWARE) sont largement utilisés pour exposer des données IoT et à référence spatiale via des Context Brokers tels que Stellio, Orion-LD, Scorpio ou Orion. Pourtant, aucun outil simple ne permettait de charger directement ces entités dans QGIS sous forme de couche vectorielle exploitable. L'objectif de NGSI Loader est de combler ce manque : offrir aux utilisateurs de QGIS un moyen direct, sécurisé et générique de se connecter à un Context Broker et d'en visualiser les entités géolocalisées, sans étape intermédiaire d'export ou de conversion manuelle.</p>
         </div>
 
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/ngsi-loader-interface-qgis.png" alt="Interface du plugin NGSI Loader dans QGIS, montrant les filtres, l'aperçu des entités récupérées et leur affichage sur la carte" class="portfolio-image">
+                <figcaption>Interface du plugin NGSI Loader dans QGIS : filtres, aperçu des entités et affichage cartographique</figcaption>
+            </figure>
+        </div>
+
         <div class="project-section">
             <h2>Démarche et outils</h2>
             <p>Le plugin est développé en Python avec PyQGIS et s'articule autour d'une architecture multi-brokers : chaque particularité de Stellio, Orion-LD ou Scorpio est isolée dans un adaptateur dédié derrière une interface commune, ce qui permet d'ajouter de nouveaux brokers sans toucher au cœur du plugin. Les profils de connexion (URL, type d'authentification, jeton) sont enregistrés et le jeton sensible est stocké via le gestionnaire d'authentification sécurisé de QGIS (QgsAuthManager) plutôt qu'en clair. Le chargement des données s'exécute en tâche de fond (QgsTask) pour ne pas geler l'interface, avec un parseur dédié au format NGSI-LD, des filtres par type d'entité, par attribut et par zone spatiale, puis une conversion générique vers GeoJSON pour affichage direct dans QGIS. Le plugin est couvert par une suite de tests automatisés (pytest) portant sur les adaptateurs de brokers, le parseur NGSI-LD, les filtres et la gestion des cas d'erreur.</p>
