@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse morphométrique des bassins versants de Gorret et de la Pouge — Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Calcul d'indicateurs morphométriques (superficie, coefficient de Gravelius, densité de drainage) pour adapter les politiques de gestion aux bassins versants de l'étang de la Pouge et de la rivière Gorret (Haute-Vienne).">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/bassins-versants-gorret-pouge.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Analyse morphométrique des bassins versants de Gorret et de la Pouge — Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="Calcul d'indicateurs morphométriques (superficie, coefficient de Gravelius, densité de drainage) pour adapter les politiques de gestion aux bassins versants de l'étang de la Pouge et de la rivière Gorret (Haute-Vienne).">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/bassins-versants-gorret-pouge.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Analyse morphométrique des bassins versants de Gorret et de la Pouge — Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="Calcul d'indicateurs morphométriques (superficie, coefficient de Gravelius, densité de drainage) pour adapter les politiques de gestion aux bassins versants de l'étang de la Pouge et de la rivière Gorret (Haute-Vienne).">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+
+    <link rel="stylesheet" href="../code/portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Géomatique, Limnologie, Environnement et Territoires · Université d'Orléans · UE Plan d'eau, Territoire, Limnosystème</p>
+            <h1>Analyse morphométrique des bassins versants de Gorret et de la Pouge</h1>
+            <p class="project-subtitle">Adapter les politiques de gestion aux territoires à partir d'indicateurs spécifiques à chaque plan d'eau</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>L'étang de la Pouge et le cours d'eau Gorret, en Haute-Vienne (Nouvelle-Aquitaine), servent de cas d'étude pour examiner l'effet de l'occupation des sols et du relief sur la dynamique thermique et hydrologique des eaux. L'objectif est de cartographier les bassins versants concernés — celui de la rivière de Gorret, celui du site du thermomètre Gorret et celui de l'étang de la Pouge — puis de calculer leurs caractéristiques morphométriques (superficie, coefficient de Gravelius, densité de drainage), des indicateurs essentiels pour la gestion des ressources en eau et la planification de la préservation.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>Les bassins versants ont été délimités sous QGIS à partir d'un Modèle Numérique de Terrain (BD ALTI) et du réseau hydrographique (BD TOPO), en recourant à des outils d'analyse hydrologique tels que GRASS r.watershed. Une carte du relief et une carte de l'occupation du sol ont ensuite été produites pour chaque bassin. Les indicateurs morphométriques ont été calculés à l'aide de la calculatrice de champs de QGIS : la superficie directement à partir de la géométrie, le coefficient de Gravelius à partir du périmètre et de la superficie du bassin, et la densité de drainage à partir de la longueur totale des cours d'eau rapportée à la superficie.</p>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/bassins-versants-gorret-localisation.jpg" alt="Carte de situation géographique des bassins versants de la rivière Gorret, du thermomètre Gorret et de l'étang de la Pouge en Haute-Vienne" class="portfolio-image">
+                <figcaption>Situation géographique des trois bassins versants étudiés</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/bassins-versants-gorret-morphometrie.jpg" alt="Carte morphométrique du bassin versant de la rivière de Gorret avec superficie, coefficient de Gravelius et densité de drainage" class="portfolio-image">
+                <figcaption>Carte morphométrique du bassin versant de la rivière de Gorret</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>Les trois bassins présentent des superficies comparables (28,5 à 36,7 km²) et un coefficient de Gravelius supérieur à 1 (1,76 à 1,91), signe d'une forme allongée qui ralentit la concentration des écoulements vers l'exutoire. Leur densité de drainage, élevée dans les trois cas (2,07 à 2,15 km/km²), traduit un réseau hydrographique dense et un ruissellement rapide plutôt qu'une forte infiltration. Ces indicateurs convergent vers un même profil : des bassins réactifs aux précipitations, où le drainage efficace des eaux de surface s'accompagne d'une sensibilité accrue aux épisodes pluvieux intenses et d'une recharge limitée des nappes phréatiques, à prendre en compte dans les choix d'aménagement du territoire.</p>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaures-d-m-daa-hingbanon/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet académique — Master GLET, Université d'Orléans.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>
