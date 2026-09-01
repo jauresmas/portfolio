@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartographie et analyse spatiale des infrastructures hydrauliques de Bonou — Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Analyse de la répartition spatiale des infrastructures hydrauliques dans la Commune de Bonou (Bénin) : inventaire, cartographie SIG et polygones de Thiessen.">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/cartographie-analyse-spatiale-bonou.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cartographie et analyse spatiale des infrastructures hydrauliques de Bonou — Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="Analyse de la répartition spatiale des infrastructures hydrauliques dans la Commune de Bonou (Bénin) : inventaire, cartographie SIG et polygones de Thiessen.">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/cartographie-analyse-spatiale-bonou.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cartographie et analyse spatiale des infrastructures hydrauliques de Bonou — Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="Analyse de la répartition spatiale des infrastructures hydrauliques dans la Commune de Bonou (Bénin) : inventaire, cartographie SIG et polygones de Thiessen.">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+
+    <link rel="stylesheet" href="../code/portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Géographie et Aménagement du Territoire · Université d'Abomey-Calavi (Bénin) · Mémoire de Licence en Géographie, 2018</p>
+            <h1>Cartographie et analyse spatiale des infrastructures hydrauliques</h1>
+            <p class="project-subtitle">Répartition spatiale des ouvrages d'eau dans la Commune de Bonou (Bénin)</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Dans la Commune de Bonou, au Bénin, la mauvaise répartition des infrastructures hydrauliques, aggravée par les pannes fréquentes de certains ouvrages, complique l'accès à l'eau potable et pousse une partie de la population vers des sources d'eau de qualité douteuse, à l'origine de nombreuses maladies hydriques. L'objectif de cette étude est d'analyser la répartition spatiale des infrastructures hydrauliques de la commune : répertorier les types d'ouvrages disponibles, cartographier leur répartition et analyser leurs modes de gestion.</p>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/bonou-zone-etude.jpg" alt="Carte de la zone d'étude de la Commune de Bonou avec ses cinq arrondissements et son réseau hydrographique" class="portfolio-image">
+                <figcaption>Zone d'étude : les cinq arrondissements de la Commune de Bonou</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>Les données mobilisées combinent le fond topographique IGN (1999), des données démographiques (INSAE) et les coordonnées géographiques des ouvrages hydrauliques relevées au GPS Garmin 76 CSx lors d'enquêtes de terrain menées auprès de 124 ménages et 12 acteurs spécifiques (chef du service technique, chefs de village, agent de l'hydraulique, membres des comités de gestion) dans les cinq arrondissements de la commune. Les coordonnées des ouvrages ont ensuite été projetées et cartographiées sous ArcGIS 10.3.1. Pour évaluer la couverture spatiale de chaque type d'infrastructure au regard de la norme de la Direction Générale de l'Hydraulique (1 point d'eau pour 250 habitants dans un rayon de 1 000 m), un polygone de Thiessen a été généré autour de chaque ouvrage, délimitant ainsi les zones bien couvertes et les secteurs délaissés.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/bonou-repartition-infrastructures.jpg" alt="Carte de répartition spatiale des infrastructures hydrauliques (AEV, bornes fontaines, forages PMH, puits modernes) dans la Commune de Bonou" class="portfolio-image">
+                <figcaption>Répartition spatiale des infrastructures hydrauliques par arrondissement</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/bonou-densite-population.jpg" alt="Carte croisant la densité de population par arrondissement et la proportion des types d'infrastructures hydrauliques" class="portfolio-image">
+                <figcaption>Infrastructures hydrauliques et densité de population par arrondissement</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/bonou-couverture-bornes-fontaines.jpg" alt="Carte de couverture spatiale des bornes fontaines obtenue par polygones de Thiessen" class="portfolio-image">
+                <figcaption>Couverture spatiale des bornes fontaines (polygones de Thiessen)</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>L'enquête a permis de recenser quatre types d'infrastructures hydrauliques dans la Commune de Bonou : 65 bornes fontaines (47 %) alimentées par 7 adductions d'eau villageoise, 60 forages à pompe à motricité humaine (43 %) et 7 puits modernes (5 %). Ces ouvrages sont concentrés dans les arrondissements de Bonou, d'Atchonsa et d'Affamè, tandis que Damè-Wogon et Hounviguè restent plus faiblement couverts, en partie à cause du fleuve Ouémé et de ses marécages. L'analyse par polygones de Thiessen confirme une couverture inégale, ne respectant pas toujours la norme d'un point d'eau pour 250 habitants dans un rayon de 1 000 m, avec certains secteurs bien desservis et d'autres délaissés. Sur le plan de la gestion, deux modes coexistent dans la commune — la gestion déléguée pour les ouvrages simples (forages) et la gestion par affermage pour les ouvrages complexes (adductions d'eau villageoise, confiées à l'ONG LIBACEL) — mais tous deux souffrent de faiblesses organisationnelles (comités de gestion incomplets, absence de suivi) qui fragilisent l'entretien et la durabilité des ouvrages. L'étude conclut à la nécessité d'un véritable système d'information géographique pour orienter les futures implantations et améliorer durablement l'accès à l'eau potable dans la commune.</p>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaures-d-m-daa-hingbanon/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Mémoire de Licence — Université d'Abomey-Calavi.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>
