@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGSI Loader — Plugin QGIS pour les Context Brokers NGSI-LD — Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="NGSI Loader, un plugin QGIS développé par Jaurès DAA-HINGBANON pour charger des entités NGSI v2 / NGSI-LD depuis n'importe quel Context Broker compatible.">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/ngsi-loader-qgis-plugin.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NGSI Loader — Plugin QGIS pour les Context Brokers NGSI-LD — Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="NGSI Loader, un plugin QGIS développé par Jaurès DAA-HINGBANON pour charger des entités NGSI v2 / NGSI-LD depuis n'importe quel Context Broker compatible.">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/ngsi-loader-qgis-plugin.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NGSI Loader — Plugin QGIS pour les Context Brokers NGSI-LD — Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="NGSI Loader, un plugin QGIS développé par Jaurès DAA-HINGBANON pour charger des entités NGSI v2 / NGSI-LD depuis n'importe quel Context Broker compatible.">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+
+    <link rel="stylesheet" href="../code/portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Développement d'outils SIG · Python · PyQGIS · Projet personnel, 2025</p>
+            <h1>NGSI Loader</h1>
+            <p class="project-subtitle">Plugin QGIS pour charger des entités NGSI v2 / NGSI-LD depuis n'importe quel Context Broker</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Les standards NGSI v2 et NGSI-LD (FIWARE) sont largement utilisés pour exposer des données IoT et à référence spatiale via des Context Brokers tels que Stellio, Orion-LD, Scorpio ou Orion. Pourtant, aucun outil simple ne permettait de charger directement ces entités dans QGIS sous forme de couche vectorielle exploitable. L'objectif de NGSI Loader est de combler ce manque : offrir aux utilisateurs de QGIS un moyen direct, sécurisé et générique de se connecter à un Context Broker et d'en visualiser les entités géolocalisées, sans étape intermédiaire d'export ou de conversion manuelle.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>Le plugin est développé en Python avec PyQGIS et s'articule autour d'une architecture multi-brokers : chaque particularité de Stellio, Orion-LD ou Scorpio est isolée dans un adaptateur dédié derrière une interface commune, ce qui permet d'ajouter de nouveaux brokers sans toucher au cœur du plugin. Les profils de connexion (URL, type d'authentification, jeton) sont enregistrés et le jeton sensible est stocké via le gestionnaire d'authentification sécurisé de QGIS (QgsAuthManager) plutôt qu'en clair. Le chargement des données s'exécute en tâche de fond (QgsTask) pour ne pas geler l'interface, avec un parseur dédié au format NGSI-LD, des filtres par type d'entité, par attribut et par zone spatiale, puis une conversion générique vers GeoJSON pour affichage direct dans QGIS. Le plugin est couvert par une suite de tests automatisés (pytest) portant sur les adaptateurs de brokers, le parseur NGSI-LD, les filtres et la gestion des cas d'erreur.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Statut et téléchargement</h2>
+            <p>NGSI Loader est une version de test (0.2.0), sous licence MIT, actuellement à la recherche de retours d'utilisateurs disposant d'un accès à un Context Broker réel pour valider les adaptateurs Stellio, Orion-LD et Scorpio face à de vraies instances. Le code source complet, la documentation d'installation et les tests sont inclus dans l'archive ci-dessous.</p>
+            <a href="../downloads/ngsi-loader.zip" class="btn" download>
+                <i class="fa-solid fa-download"></i> Télécharger le plugin (.zip)
+            </a>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaures-d-m-daa-hingbanon/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet personnel — Licence MIT.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>
