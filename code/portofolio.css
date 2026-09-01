@@ -1131,6 +1131,16 @@ footer .copyright{
     text-align: justify;
 }
 
+.project-section ol {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    padding-left: 2.2rem;
+}
+
+.project-section ol li {
+    margin-bottom: 0.6rem;
+}
+
 .project-figures {
     display: grid;
     /* auto-fit : une seule figure occupe toute la largeur, deux se partagent l'espace */
