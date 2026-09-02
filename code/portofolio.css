@@ -1125,10 +1125,27 @@ footer .copyright{
     text-shadow: 0 0 10px var(--main-color);
 }
 
+.project-section h3 {
+    font-size: 1.8rem;
+    color: var(--main-color);
+    margin: 1.4rem 0 0.5rem;
+}
+
 .project-section p {
     font-size: 1.6rem;
     line-height: 1.7;
     text-align: justify;
+}
+
+.project-section p a {
+    color: var(--main-color);
+    text-decoration: underline;
+    transition: 0.3s ease;
+}
+
+.project-section p a:hover,
+.project-section p a:focus-visible {
+    text-shadow: 0 0 8px var(--main-color);
 }
 
 .project-section ol {

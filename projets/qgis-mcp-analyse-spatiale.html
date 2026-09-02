@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analyse géospatiale pilotée par langage naturel — Étude de cas QGIS-MCP — Jaurès DAA-HINGBANON</title>
-    <meta name="description" content="Étude de cas sur le protocole QGIS-MCP : piloter QGIS par le langage naturel avec Claude pour conduire quatre analyses spatiales (IDW, DBSCAN, Voronoï, Getis-Ord Gi*).">
+    <meta name="description" content="Étude de cas sur le protocole QGIS-MCP : piloter QGIS par le langage naturel pour conduire quatre analyses spatiales (IDW, DBSCAN, Voronoï, Getis-Ord Gi*).">
     <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/qgis-mcp-analyse-spatiale.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Analyse géospatiale pilotée par langage naturel — Étude de cas QGIS-MCP — Jaurès DAA-HINGBANON">
-    <meta property="og:description" content="Étude de cas sur le protocole QGIS-MCP : piloter QGIS par le langage naturel avec Claude pour conduire quatre analyses spatiales (IDW, DBSCAN, Voronoï, Getis-Ord Gi*).">
+    <meta property="og:description" content="Étude de cas sur le protocole QGIS-MCP : piloter QGIS par le langage naturel pour conduire quatre analyses spatiales (IDW, DBSCAN, Voronoï, Getis-Ord Gi*).">
     <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/qgis-mcp-analyse-spatiale.html">
     <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
     <meta property="og:locale" content="fr_FR">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Analyse géospatiale pilotée par langage naturel — Étude de cas QGIS-MCP — Jaurès DAA-HINGBANON">
-    <meta name="twitter:description" content="Étude de cas sur le protocole QGIS-MCP : piloter QGIS par le langage naturel avec Claude pour conduire quatre analyses spatiales (IDW, DBSCAN, Voronoï, Getis-Ord Gi*).">
+    <meta name="twitter:description" content="Étude de cas sur le protocole QGIS-MCP : piloter QGIS par le langage naturel pour conduire quatre analyses spatiales (IDW, DBSCAN, Voronoï, Getis-Ord Gi*).">
     <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
 
     <link rel="stylesheet" href="../code/portofolio.css">
@@ -35,29 +35,86 @@
 
     <main class="project-page">
         <div class="project-hero">
-            <p class="project-tag">Développement d'outils SIG · Model Context Protocol · Python · Projet personnel, 2025 · Note technique assistée par Claude (Anthropic)</p>
+            <p class="project-tag">Développement d'outils SIG · Model Context Protocol · Python · Projet personnel, 2025 · Note technique</p>
             <h1>Analyse géospatiale pilotée par langage naturel</h1>
-            <p class="project-subtitle">Étude de cas sur le protocole QGIS-MCP : quatre analyses spatiales conduites sans manipulation de l'interface graphique</p>
+            <p class="project-subtitle">Une étude de cas sur le protocole QGIS-MCP</p>
         </div>
 
         <div class="project-section">
-            <h2>Contexte et objectif</h2>
-            <p>Le Model Context Protocol (MCP) définit une interface standardisée par laquelle un modèle de langage peut invoquer des outils externes de façon structurée. Appliqué à QGIS via un plugin serveur MCP, ce protocole expose les fonctions du logiciel — gestion de projet, lecture d'attributs, exécution d'algorithmes de la boîte à outils Processing, exécution de code PyQGIS arbitraire — comme autant d'appels de fonction accessibles depuis une conversation en langage naturel. L'objectif de cette étude de cas est d'évaluer dans quelle mesure ce mode d'interaction peut se substituer à la manipulation directe de l'interface graphique pour la conduite d'analyses spatiales standards, à travers quatre méthodes complémentaires : une interpolation continue (IDW), un partitionnement par densité (DBSCAN), une partition exhaustive de l'espace (Voronoï) et une statistique spatiale inférentielle sans implémentation native dans QGIS (Getis-Ord Gi*).</p>
+            <h2>Résumé</h2>
+            <p>Ce document documente une expérimentation du protocole QGIS-MCP (Model Context Protocol), qui permet de piloter une instance QGIS directement depuis une conversation en langage naturel. À partir d'un jeu de 300 capteurs de température synthétiques répartis sur l'agglomération parisienne, quatre méthodes d'analyse spatiale ont été mises en œuvre sans interaction manuelle avec l'interface graphique : interpolation par pondération inverse à la distance (IDW), partitionnement spatial par densité (DBSCAN), tessellation de Voronoï, et détection de structures spatiales significatives par la statistique locale de Getis-Ord Gi*. Les résultats montrent que le protocole permet non seulement d'orchestrer des algorithmes de la boîte à outils Processing existante, mais également d'exécuter du code arbitraire (PyQGIS, NumPy) pour implémenter des méthodes statistiques ne disposant pas d'algorithme natif.</p>
         </div>
 
         <div class="project-section">
-            <h2>Données et environnement technique</h2>
-            <p>Le jeu de données utilisé est une couche vectorielle ponctuelle de démonstration comprenant 300 entités de type « Sensor », chacune porteuse d'un identifiant (entity_id), d'un type d'entité et d'une valeur de température (attribut temperature, en degrés Celsius), réparties sur une emprise correspondant à Paris intra-muros et sa proche périphérie (EPSG:4326). Ces entités NGSI ont été chargées dans QGIS avec <a href="ngsi-loader-qgis-plugin.html">NGSI Loader</a>, un plugin QGIS développé par l'auteur pour récupérer des entités NGSI v2 / NGSI-LD depuis un Context Broker et les afficher directement comme couche vectorielle — c'est ce plugin qui a servi à constituer la couche de 300 capteurs exploitée dans cette étude de cas.</p>
-            <p><strong>Avertissement méthodologique :</strong> l'inspection des valeurs révèle un motif cyclique de période 15 se répétant à l'identique sur l'ensemble des 300 enregistrements, signature typique d'un jeu de données synthétique généré à des fins de démonstration plutôt que d'une mesure environnementale réelle. Les structures spatiales mises en évidence dans cette étude (foyers de chaleur, autocorrélation) doivent donc être interprétées comme des artefacts de la position géographique relative des capteurs partageant une même phase du cycle, et non comme des phénomènes climatiques réels. Le jeu de données conserve néanmoins toute sa valeur pour l'objectif poursuivi ici : démontrer la mise en œuvre méthodologique des quatre analyses.</p>
-            <p>Les analyses ont été exécutées au sein d'une instance QGIS 3.33 pilotée via le plugin serveur MCP, exposant la lecture de projet et de couches, l'exécution d'algorithmes Processing (module <code>processing.run</code>) et l'exécution de code PyQGIS arbitraire (fonction <code>execute_code</code>). Les figures présentées ci-dessous ont été régénérées à l'identique dans un environnement Python indépendant (NumPy, SciPy, scikit-learn, Matplotlib) à des fins de mise en forme éditoriale ; les statistiques rapportées ont été vérifiées concordantes entre les deux environnements d'exécution.</p>
+            <h2>1. Introduction</h2>
+            <p>Le Model Context Protocol (MCP) définit une interface standardisée par laquelle un modèle de langage peut invoquer des outils externes de façon structurée. Appliqué à QGIS, ce protocole expose les fonctions du logiciel — gestion de projet, lecture d'attributs, exécution d'algorithmes de la boîte à outils Processing, et exécution de code PyQGIS arbitraire — comme autant d'appels de fonction accessibles depuis une conversation en langage naturel.</p>
+            <p>L'objectif de cette note est d'évaluer, sur un cas d'usage concret, dans quelle mesure ce mode d'interaction peut se substituer à la manipulation directe de l'interface graphique pour la conduite d'analyses spatiales standards. Quatre méthodes ont été retenues pour leur complémentarité méthodologique : une méthode d'interpolation continue, une méthode de partitionnement par densité, une méthode de partition exhaustive de l'espace, et une méthode de statistique spatiale inférentielle ne disposant pas d'implémentation native dans QGIS.</p>
         </div>
 
         <div class="project-section">
-            <h2>Résultats</h2>
-            <p><strong>Interpolation spatiale par pondération inverse à la distance (IDW).</strong> L'algorithme natif <code>qgis:idwinterpolation</code> (puissance p = 2) a produit une surface raster continue dont les valeurs s'étendent de 15,0 °C à 30,4 °C, correspondant exactement aux bornes empiriques du jeu de données. La structure fragmentée obtenue est cohérente avec l'absence d'autocorrélation spatiale réelle dans les données sous-jacentes : chaque capteur génère une signature locale (« bullseye ») qui ne se propage pas de façon cohérente à ses voisins immédiats.</p>
-            <p><strong>Partitionnement spatial par densité (DBSCAN).</strong> Les 100 capteurs dépassant le seuil moyenne + 0,5 écart-type (24,93 °C) ont été extraits puis soumis à un partitionnement DBSCAN (<code>native:dbscanclustering</code> ; rayon ε = 0,012° ≈ 1,3 km, taille minimale de groupe = 3). Seize groupes ont été identifiés, de taille comprise entre 3 et 14 capteurs, pour vingt capteurs chauds classés comme bruit (isolés) ; le groupe le plus étendu (14 capteurs) constitue le foyer le plus probable d'un point de vue purement géométrique.</p>
-            <p><strong>Tessellation de Voronoï.</strong> L'algorithme <code>native:voronoipolygons</code> associe à chaque capteur l'ensemble des points de l'espace qui lui sont plus proches que de tout autre capteur, produisant une partition exhaustive du plan en 300 polygones colorés selon la température du capteur générateur. Au-delà de la lecture thématique, la surface des cellules constitue un indicateur direct de la représentativité spatiale de chaque capteur : les grandes cellules signalent des zones sous-échantillonnées, utile pour orienter un futur déploiement d'instruments.</p>
-            <p><strong>Autocorrélation spatiale locale (Getis-Ord Gi*).</strong> Cette statistique ne disposant d'aucune implémentation native dans QGIS, elle a été programmée directement en NumPy via l'interface d'exécution de code du protocole MCP, avec une matrice de contiguïté binaire définie par un seuil de distance de 0,02° (≈ 2,2 km, voisinage moyen de 16,8 capteurs). Sur 300 capteurs, 28 constituent un foyer chaud statistiquement significatif (16 à 95 %, 12 à 90 %) et 25 un foyer froid (11 à 95 %, 14 à 90 %), les 247 capteurs restants ne présentant pas de déviation significative par rapport à la distribution spatiale aléatoire.</p>
+            <h2>2. Données et méthodes</h2>
+            <h3>2.1 Jeu de données</h3>
+            <p>Le jeu de données utilisé est une couche vectorielle ponctuelle de démonstration comprenant 300 entités de type « Sensor », chacune porteuse d'un identifiant (entity_id), d'un type d'entité et d'une valeur de température (attribut temperature, en degrés Celsius). Les capteurs sont répartis sur une emprise géographique correspondant approximativement à Paris intra-muros et sa proche périphérie (longitude 2,250° à 2,420° E ; latitude 48,801° à 48,920° N), en système de coordonnées géographiques EPSG:4326. Ces entités NGSI ont été chargées dans QGIS avec <a href="ngsi-loader-qgis-plugin.html">NGSI Loader</a>, un plugin QGIS développé par l'auteur pour récupérer des entités NGSI v2 / NGSI-LD depuis un Context Broker et les afficher directement comme couche vectorielle — c'est ce plugin qui a servi à constituer la couche de 300 capteurs exploitée dans cette étude de cas.</p>
+            <p><strong>Avertissement méthodologique :</strong> l'inspection des valeurs révèle un motif cyclique de période 15 se répétant à l'identique sur l'ensemble des 300 enregistrements, signature typique d'un jeu de données synthétique généré à des fins de démonstration plutôt que d'une mesure environnementale réelle. Les structures spatiales mises en évidence dans ce document (foyers de chaleur, autocorrélation) doivent donc être interprétées comme des artefacts de la position géographique relative des capteurs partageant une même phase du cycle, et non comme des phénomènes climatiques réels. Le jeu de données conserve néanmoins toute sa valeur pour l'objectif poursuivi ici : démontrer la mise en œuvre méthodologique des quatre analyses.</p>
+            <h3>2.2 Environnement technique</h3>
+            <p>Les analyses ont été exécutées au sein d'une instance QGIS 3.33 pilotée via le plugin serveur MCP, exposant les outils suivants : lecture de projet et de couches, exécution d'algorithmes Processing (module <code>processing.run</code>), et exécution de code PyQGIS arbitraire (fonction <code>execute_code</code>). Les figures présentées dans cette note ont été régénérées à l'identique dans un environnement Python indépendant (NumPy, SciPy, scikit-learn, Matplotlib) à partir des mêmes données et des mêmes paramètres, à des fins de mise en forme éditoriale ; les statistiques rapportées ont été vérifiées concordantes entre les deux environnements d'exécution.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>3. Résultats</h2>
+            <h3>3.1 Interpolation spatiale par pondération inverse à la distance (IDW)</h3>
+            <p>L'interpolation IDW estime la valeur d'un champ continu en tout point de l'espace à partir d'une moyenne des observations voisines pondérée par l'inverse de leur distance élevée à une puissance p (ici p = 2), au moyen de l'algorithme natif <code>qgis:idwinterpolation</code>. Cette méthode a produit une surface raster continue dont les valeurs s'étendent de 15,0 °C à 30,4 °C, correspondant exactement aux bornes empiriques du jeu de données.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/qgis-mcp-idw-interpolation.png" alt="Surface de température interpolée par IDW, avec les 300 capteurs sources en points noirs" class="portfolio-image">
+                <figcaption>Fig. 1 — Surface de température interpolée par IDW (puissance = 2). Les points noirs indiquent la position des 300 capteurs sources.</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <p>La surface obtenue présente une structure fragmentée, cohérente avec l'absence d'autocorrélation spatiale réelle dans les données sous-jacentes (cf. §2.1) : chaque capteur génère une signature locale (« bullseye ») qui ne se propage pas de façon cohérente à ses voisins immédiats.</p>
+            <h3>3.2 Partitionnement spatial par densité (DBSCAN)</h3>
+            <p>Les 100 capteurs présentant une température supérieure au seuil moyenne + 0,5 écart-type (24,93 °C) ont été extraits (algorithme <code>native:extractbyexpression</code>), puis soumis à un partitionnement DBSCAN (<code>native:dbscanclustering</code> ; rayon de voisinage ε = 0,012° ≈ 1,3 km, taille minimale de groupe = 3). Cette méthode distingue les foyers de chaleur spatialement cohérents du bruit statistique constitué de capteurs chauds mais isolés.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/qgis-mcp-dbscan-clustering.png" alt="Partitionnement DBSCAN des capteurs à température élevée, seize groupes colorés distinctement" class="portfolio-image">
+                <figcaption>Fig. 2 — Partitionnement DBSCAN des capteurs à température élevée. Chaque couleur distincte représente un groupe spatial identifié ; les croix grises désignent les points de bruit.</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <p>Seize groupes ont été identifiés, de taille comprise entre 3 et 14 capteurs, pour vingt capteurs chauds classés comme bruit (isolés). Le groupe le plus étendu (14 capteurs) constitue le foyer le plus probable d'un point de vue purement géométrique.</p>
+            <h3>3.3 Tessellation de Voronoï</h3>
+            <p>La tessellation de Voronoï (<code>native:voronoipolygons</code>) associe à chaque capteur l'ensemble des points de l'espace qui lui sont plus proches que de tout autre capteur, produisant une partition exhaustive du plan en 300 polygones. Chaque polygone hérite des attributs de son capteur générateur, permettant une symbolisation choroplèthe directe.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/qgis-mcp-voronoi-tessellation.png" alt="Polygones de Voronoï colorés selon la température du capteur générateur" class="portfolio-image">
+                <figcaption>Fig. 3 — Polygones de Voronoï colorés selon la température du capteur générateur. La taille de chaque cellule est inversement proportionnelle à la densité locale du réseau de capteurs.</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <p>Au-delà de la lecture thématique, la surface des cellules constitue un indicateur direct de la représentativité spatiale de chaque capteur : les grandes cellules signalent des zones sous-échantillonnées du réseau, information utile pour orienter un futur déploiement d'instruments.</p>
+            <h3>3.4 Autocorrélation spatiale locale (Getis-Ord Gi*)</h3>
+            <p>La statistique Gi* de Getis et Ord (1995) ne dispose d'aucune implémentation native dans la boîte à outils Processing de QGIS. Elle a été programmée directement au moyen de NumPy via l'interface d'exécution de code du protocole MCP, avec une matrice de contiguïté binaire définie par un seuil de distance de 0,02° (≈ 2,2 km, voisinage moyen de 16,8 capteurs). Le score obtenu pour chaque capteur s'interprète directement comme un z-score sous l'hypothèse nulle de distribution spatiale aléatoire.</p>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/qgis-mcp-getis-ord.png" alt="Classification Getis-Ord Gi* des 300 capteurs selon le seuil de significativité statistique" class="portfolio-image">
+                <figcaption>Fig. 4 — Classification Getis-Ord Gi* des 300 capteurs selon le seuil de significativité statistique (90 % et 95 %).</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <p>La distribution des classes obtenues est résumée au Tableau 1. Sur 300 capteurs, 28 constituent un foyer chaud statistiquement significatif (16 à 95 %, 12 à 90 %) et 25 un foyer froid (11 à 95 %, 14 à 90 %), les 247 capteurs restants ne présentant pas de déviation significative par rapport à la distribution spatiale aléatoire.</p>
+            <p><strong>Tableau 1</strong> — Répartition des 300 capteurs par classe de significativité Gi*</p>
             <table>
                 <tr><th>Classe</th><th>Effectif (n)</th><th>Part de l'échantillon</th></tr>
                 <tr><td>Hot Spot (confiance 95 %)</td><td>16</td><td>5,3 %</td></tr>
@@ -68,28 +125,23 @@
             </table>
         </div>
 
-        <div class="project-figures" id="projectFigures">
-            <figure class="project-figure">
-                <img src="../img/projets/qgis-mcp-idw-interpolation.png" alt="Surface de température interpolée par IDW, avec les 300 capteurs sources en points noirs" class="portfolio-image">
-                <figcaption>Fig. 1 — Interpolation IDW de la température (puissance = 2)</figcaption>
-            </figure>
-            <figure class="project-figure">
-                <img src="../img/projets/qgis-mcp-dbscan-clustering.png" alt="Partitionnement DBSCAN des capteurs à température élevée, seize groupes colorés distinctement" class="portfolio-image">
-                <figcaption>Fig. 2 — Partitionnement DBSCAN des capteurs à température élevée</figcaption>
-            </figure>
-            <figure class="project-figure">
-                <img src="../img/projets/qgis-mcp-voronoi-tessellation.png" alt="Polygones de Voronoï colorés selon la température du capteur générateur" class="portfolio-image">
-                <figcaption>Fig. 3 — Tessellation de Voronoï des zones d'influence</figcaption>
-            </figure>
-            <figure class="project-figure">
-                <img src="../img/projets/qgis-mcp-getis-ord.png" alt="Classification Getis-Ord Gi* des 300 capteurs selon le seuil de significativité statistique" class="portfolio-image">
-                <figcaption>Fig. 4 — Classification Getis-Ord Gi* (foyers chauds et froids)</figcaption>
-            </figure>
+        <div class="project-section">
+            <h2>4. Discussion</h2>
+            <p>Les quatre méthodes mises en œuvre répondent à des questions de recherche distinctes et se positionnent comme complémentaires plutôt que concurrentes. L'IDW répond à une logique d'estimation continue, le DBSCAN à une logique de détection de groupes, la tessellation de Voronoï à une logique de partition et d'affectation, et la statistique Gi* à une logique inférentielle de test d'hypothèse spatiale.</p>
+            <table>
+                <tr><th>Méthode</th><th>Nature du résultat</th><th>Question posée</th><th>Complexité algorithmique</th></tr>
+                <tr><td>IDW (Fig. 1)</td><td>Surface continue (raster)</td><td>Quelle est la température estimée en tout point ?</td><td>Algorithme Processing natif</td></tr>
+                <tr><td>DBSCAN (Fig. 2)</td><td>Groupes discrets de points</td><td>Où les capteurs chauds forment-ils un foyer réel ?</td><td>Algorithme Processing natif</td></tr>
+                <tr><td>Voronoï (Fig. 3)</td><td>Partition exhaustive (polygones)</td><td>Quelle portion d'espace chaque capteur représente-t-il ?</td><td>Algorithme Processing natif</td></tr>
+                <tr><td>Getis-Ord Gi* (Fig. 4)</td><td>Classification par significativité statistique</td><td>Où la température est-elle anormalement élevée/basse ?</td><td>Implémentation ad hoc (NumPy) — aucun algorithme natif</td></tr>
+            </table>
+            <p>Sur le plan technique, une distinction mérite d'être soulignée. Les trois premières méthodes mobilisent des algorithmes déjà encapsulés dans la boîte à outils Processing de QGIS : le rôle du protocole MCP se limite alors à l'orchestration — sélection de la couche, paramétrage, exécution, stylisation du résultat — normalement effectuée manuellement via l'interface graphique ou la console Python. La quatrième méthode, en revanche, ne correspond à aucun algorithme préexistant dans QGIS : son implémentation a nécessité l'écriture et l'exécution, à la volée, d'un script NumPy complet au sein de l'environnement PyQGIS. Cette capacité à passer de l'orchestration d'outils existants à la production de code original, sur simple demande formulée en langage naturel, constitue l'apport distinctif du protocole par rapport à une automatisation classique par script préécrit.</p>
+            <p>Les limites de cette étude de cas tiennent principalement à la nature synthétique du jeu de données (§2.1), qui ne permet pas de tirer de conclusion sur un phénomène climatique réel, ainsi qu'à l'absence de comparaison quantitative des temps d'exécution avec un flux de travail manuel équivalent, qui constituerait un prolongement naturel de ce travail.</p>
         </div>
 
         <div class="project-section">
-            <h2>Discussion et conclusion</h2>
-            <p>Les quatre méthodes répondent à des questions de recherche distinctes et se positionnent comme complémentaires plutôt que concurrentes : l'IDW répond à une logique d'estimation continue, le DBSCAN à une logique de détection de groupes, la tessellation de Voronoï à une logique de partition et d'affectation, et la statistique Gi* à une logique inférentielle de test d'hypothèse spatiale. Sur le plan technique, une distinction mérite d'être soulignée : les trois premières méthodes mobilisent des algorithmes déjà encapsulés dans la boîte à outils Processing de QGIS, le protocole MCP se limitant alors à l'orchestration (sélection de la couche, paramétrage, exécution, stylisation), normalement effectuée manuellement via l'interface graphique. La statistique Gi*, en revanche, ne correspond à aucun algorithme préexistant dans QGIS : son implémentation a nécessité l'écriture et l'exécution, à la volée, d'un script NumPy complet au sein de l'environnement PyQGIS. Cette capacité à passer de l'orchestration d'outils existants à la production de code original, sur simple demande formulée en langage naturel, constitue l'apport distinctif du protocole par rapport à une automatisation classique par script préécrit. Les limites de cette étude tiennent principalement à la nature synthétique du jeu de données, qui ne permet pas de tirer de conclusion sur un phénomène climatique réel, ainsi qu'à l'absence de comparaison quantitative des temps d'exécution avec un flux de travail manuel équivalent.</p>
+            <h2>5. Conclusion</h2>
+            <p>Cette étude de cas illustre la faisabilité d'un pilotage complet d'un logiciel SIG par le langage naturel, depuis la lecture des données jusqu'à la production d'une cartographie stylisée, en passant par l'exécution d'algorithmes standards et l'implémentation de méthodes statistiques sur mesure. Le protocole QGIS-MCP se positionne ainsi moins comme un simple assistant documentaire que comme une couche d'orchestration et de développement à part entière, capable de combiner l'usage d'une boîte à outils existante et la production de code original au sein d'un même flux conversationnel.</p>
         </div>
 
         <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
@@ -105,7 +157,7 @@
             </a>
         </div>
         <p class="copyright" style="margin-top:1rem;">
-            Projet personnel — Note technique assistée par Claude (Anthropic).
+            Projet personnel — Note technique.
         </p>
         <p class="copyright">
             © Jaurès DAA-HINGBANON | All Right Reserved
