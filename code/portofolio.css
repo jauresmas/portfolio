@@ -1141,6 +1141,24 @@ footer .copyright{
     margin-bottom: 0.6rem;
 }
 
+.project-section table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.project-section th,
+.project-section td {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--main-color);
+    text-align: left;
+}
+
+.project-section th {
+    color: var(--main-color);
+}
+
 .project-figures {
     display: grid;
     /* auto-fit : une seule figure occupe toute la largeur, deux se partagent l'espace */
