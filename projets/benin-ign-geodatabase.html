@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De 77 géodatabases IGN à une base relationnelle unique — Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Consolidation du fonds cartographique de l'IGN Bénin (77 géodatabases communales) en une base PostgreSQL/PostGIS unique, indexée et connectée à QGIS.">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/benin-ign-geodatabase.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="De 77 géodatabases IGN à une base relationnelle unique — Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="Consolidation du fonds cartographique de l'IGN Bénin (77 géodatabases communales) en une base PostgreSQL/PostGIS unique, indexée et connectée à QGIS.">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/benin-ign-geodatabase.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="De 77 géodatabases IGN à une base relationnelle unique — Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="Consolidation du fonds cartographique de l'IGN Bénin (77 géodatabases communales) en une base PostgreSQL/PostGIS unique, indexée et connectée à QGIS.">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+
+    <link rel="stylesheet" href="../code/portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Bases de données géospatiales · Python · PostgreSQL/PostGIS · Projet personnel, 2025</p>
+            <h1>De 77 géodatabases IGN à une base relationnelle unique</h1>
+            <p class="project-subtitle">Consolidation du fonds cartographique de l'IGN Bénin dans une base <code>benin_ign</code></p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Le fonds topographique brut de l'Institut National de l'information Géographique du Bénin est organisé en douze départements, chacun subdivisé en communes, chaque commune stockée comme une géodatabase ESRI (<code>.gdb</code>) indépendante — soit 77 géodatabases au total. L'objectif était de tout regrouper dans une seule base de données relationnelle PostgreSQL/PostGIS, robuste et interrogeable. La difficulté principale : ces 77 fichiers ont été saisis sur près d'une décennie par des équipes différentes, chacune avec ses propres conventions de nommage et de typage des données.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+
+            <h3>1. Audit — 199 noms pour 45 thèmes</h3>
+            <p>Avant d'écrire la moindre ligne d'import, un script Python (module <code>fiona</code>) a parcouru les 77 géodatabases pour lister toutes leurs couches. Résultat : 199 noms de couches distincts pour un nombre réel de thèmes bien plus restreint (écoles, routes, cours d'eau, zones inondables...), à cause de quatre sources de désordre accumulées commune par commune : des variantes de casse (<code>route</code> / <code>Route</code>), des fautes de frappe (<code>cours_deau</code> / <code>cours_deeau</code>), des résidus de traitements QGIS antérieurs (couches <code>_Clip</code>, <code>_1</code>, <code>_select</code>), et une nomenclature à part utilisée par le département de l'Ouémé.</p>
+            <p>Le piège : l'hypothèse de départ (les couches <code>_Clip</code> sont de simples doublons à ignorer) s'est révélée fausse dans quinze communes du Couffo et du Zou, où cette version <code>_Clip</code> était la seule copie existante de la couche. La résolution des doublons a donc dû se faire commune par commune, jamais par un motif de nom appliqué globalement. Après correction, les 199 noms bruts se résolvent en 48 thèmes canoniques, formant un plan d'import de 3 114 entrées (une par couple commune × thème réellement présent).</p>
+            <p class="code-caption">audit_schema.py — extrait</p>
+            <pre><code>for dept, name, path in gdbs:
+    commune_key = f"{dept}/{name}"
+    layers = fiona.listlayers(path)
+    for l in layers:
+        with fiona.open(path, layer=l) as src:
+            layer_geom[l].add(str(src.schema["geometry"]))
+            for fname, ftype in src.schema["properties"].items():
+                layer_fields[l][fname].add(ftype)
+            layer_presence[l].append(commune_key)
+
+print(f"Distinct layer names across all communes: {len(layer_fields)}")</code></pre>
+
+            <h3>2. Import — quand l'outil standard ne suffit pas</h3>
+            <p>La voie naturelle pour charger des géodatabases ESRI dans PostGIS est <code>ogr2ogr</code>. Premier obstacle : la copie de GDAL livrée avec l'installateur PostgreSQL n'embarque pas le pilote d'écriture PostgreSQL, seulement un export SQL (<code>PGDUMP</code>). Retour à Python, avec GeoPandas et SQLAlchemy pour piloter l'écriture directement via psycopg2. Deux problèmes de fond sont apparus en cours de route : des types incohérents d'un même attribut d'une commune à l'autre (résolu en convertissant tout en texte à l'import, puis en retypant proprement une fois en base), et surtout un bug plus coûteux — <code>geopandas.to_postgis()</code> déduit le type de la colonne géométrie à partir du premier lot inséré et ignore silencieusement tout <code>dtype</code> passé explicitement. Si la première commune traitée pour un thème a une couche vide ou 2D, la table se fige et tout le reste de l'import échoue avec <code>Geometry has Z dimension but column does not</code>.</p>
+            <p>La parade : créer la table à la main, avec une colonne géométrie générique et toujours 3D, puis n'utiliser que <code>if_exists='append'</code> pour que GeoPandas ne touche plus jamais au schéma.</p>
+            <p class="code-caption">run_import2.py — extrait</p>
+            <pre><code>col_defs = ", ".join(f'"{c}" text' for c in col_union)
+create_sql = (
+    f'DROP TABLE IF EXISTS ign."{theme}"; '
+    f'CREATE TABLE ign."{theme}" ('
+    f'gid serial PRIMARY KEY, {col_defs}, '
+    f'departement text, commune_src text, geometry geometry(GeometryZ,32631))'
+)
+with engine.begin() as conn:
+    conn.execute(text(create_sql))
+
+# geometry forcée en 3D avant écriture, pour que la dimension
+# de la colonne ne dépende jamais de la commune écrite en premier
+gdf["geometry"] = gdf["geometry"].apply(
+    lambda g: shapely.force_3d(g) if g is not None else None
+)
+gdf.to_postgis(theme, engine, schema="ign", if_exists="append", index=False)</code></pre>
+            <p>Résultat : 3 114 / 3 114 couches importées, 0 échec, 909 429 lignes au total, 48 tables thématiques créées.</p>
+
+            <h3>3. Finaliser le schéma — index, clés, types</h3>
+            <p>Trois passes automatisées ont transformé l'ensemble de tables importées en un vrai schéma relationnel : un index spatial GIST sur la colonne géométrie de chaque table ; la table <code>ign.commune</code> (77 lignes) promue référentiel communal via une contrainte <code>UNIQUE(commune_src)</code>, une nouvelle table <code>ign.ref_departement</code> (12 lignes), puis une clé étrangère <code>commune_src → ign.commune</code> posée sur les 47 autres tables (0 valeur orpheline détectée) ; et un script de cast qui scanne chaque colonne texte et la retype en <code>bigint</code> ou <code>numeric</code> si toutes ses valeurs non nulles sont numériques — 49 colonnes sont devenues des identifiants, 67 des mesures, 396 sont restées en texte parce qu'elles le sont réellement.</p>
+            <p class="code-caption">cast_numeric.py — extrait</p>
+            <pre><code>for c in cols:
+    total, non_null, matches_int, matches_num = conn.execute(text(f'''
+        SELECT count(*),
+          count(*) FILTER (WHERE "{c}" IS NOT NULL AND "{c}" &lt;&gt; ''),
+          count(*) FILTER (WHERE "{c}" ~ '{INT_RE}'),
+          count(*) FILTER (WHERE "{c}" ~ '{NUM_RE}')
+        FROM ign."{t}"
+    ''')).fetchone()
+
+    if matches_int == non_null:
+        conn.execute(text(
+            f'ALTER TABLE ign."{t}" ALTER COLUMN "{c}" TYPE bigint USING NULLIF("{c}", \'\')::bigint'
+        ))</code></pre>
+
+            <h3>4. Un vrai bug de données, trouvé en connectant QGIS</h3>
+            <p>En chargeant les 49 tables dans QGIS, une seule a refusé de s'afficher : <code>limite_administrative</code>, qui mélangeait 378 lignes et 20 polygones — QGIS n'accepte pas une géométrie de type mixte dans une même couche. Les 20 polygones provenaient tous de dix communes du Couffo et du Zou, là même où la source utilisait la nomenclature <code>_Clip</code> évoquée à l'étape 1 : dans ces communes, la couche encodait autre chose qu'une simple limite linéaire. Solution : séparer proprement en deux tables homogènes, reliées par la même clé étrangère vers <code>commune</code>.</p>
+            <p class="code-caption">séparation limite_administrative — SQL</p>
+            <pre><code>BEGIN;
+CREATE TABLE ign.limite_administrative_zone AS
+  SELECT * FROM ign.limite_administrative WHERE ST_GeometryType(geometry) = 'ST_MultiPolygon';
+DELETE FROM ign.limite_administrative WHERE ST_GeometryType(geometry) = 'ST_MultiPolygon';
+ALTER TABLE ign.limite_administrative_zone ADD PRIMARY KEY (gid);
+CREATE INDEX idx_limite_administrative_zone_geom ON ign.limite_administrative_zone USING GIST (geometry);
+ALTER TABLE ign.limite_administrative_zone ADD CONSTRAINT fk_limite_administrative_zone_commune
+  FOREIGN KEY (commune_src) REFERENCES ign.commune(commune_src);
+COMMIT;</code></pre>
+
+            <h3>5. Connecter QGIS et pgAdmin</h3>
+            <p>Le protocole <a href="qgis-mcp-analyse-spatiale.html">QGIS-MCP</a>, déjà mis en œuvre pour piloter QGIS par langage naturel dans un autre projet, a servi ici à automatiser le chargement des 49 couches dans un groupe de calques via l'API PyQGIS, puis l'enregistrement d'une véritable connexion PostgreSQL native (via <code>QgsProviderRegistry</code>), visible dans le Navigateur au même titre qu'une connexion créée à la main. Côté pgAdmin, le Geometry Viewer restait obstinément vide : toutes les géométries avaient été forcées en 3D pendant l'import (étape 2), et le rendu Leaflet de pgAdmin gère mal la dimension Z — un bug connu, sans lien avec la validité des données. Plutôt que de corriger requête par requête, la base entière a été reconvertie en 2D avec <code>ST_Force2D()</code>, appliqué aux 49 tables spatiales sans casser un seul index.</p>
+            <p class="code-caption">force_2d.py — extrait</p>
+            <pre><code>for t in tables:
+    conn.execute(text(
+        f'ALTER TABLE ign."{t}" ALTER COLUMN geometry '
+        f'TYPE geometry(Geometry,32631) USING ST_Force2D(geometry)'
+    ))</code></pre>
+
+            <h3>6. Modéliser : du sens métier au schéma physique</h3>
+            <p>Une fois la base stable, restait à la documenter proprement en Merise, à deux niveaux de lecture. Le Modèle Conceptuel de Données capture le sens métier indépendamment de l'implémentation : un département comprend des communes, chaque commune localise des objets géographiques — une entité générique qui se spécialise (contrainte <em>T</em>, totale et exclusive) en 48 types concrets. C'est aussi le seul niveau où l'arrondissement existe comme entité à part entière ; physiquement, il est fondu dans les tables <code>arrondissement_polygone</code> / <code>arrondissement_ligne</code>. Le Modèle Physique de Données reflète le schéma réel : chaque table thématique porte un identifiant <code>gid</code>, ses attributs propres, une clé étrangère <code>commune_src</code> et une colonne <code>geometry</code> typée et indexée en GIST.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>La base <code>benin_ign</code> tient aujourd'hui dans un schéma unique, <code>ign</code> : 50 tables (49 spatiales en 2D EPSG:32631, plus le référentiel <code>ref_departement</code>), 909 429 entités réparties sur ces tables et chacune tracée jusqu'à sa commune d'origine, 49 index GIST avec une clé primaire et une clé étrangère par table thématique, une connexion PostgreSQL native persistante dans QGIS et une base lisible dans pgAdmin. Le chantier suivant, s'il a lieu : normaliser plus loin les 396 colonnes texte restantes — des champs comme <code>type</code>, <code>nature</code> ou <code>source</code> répètent les mêmes valeurs sur des milliers de lignes et gagneraient à devenir de vraies tables de référence.</p>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaur%C3%A8s-daa-hingbanon-aa8a7517a/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet personnel.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>

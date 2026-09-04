@@ -1176,6 +1176,30 @@ footer .copyright{
     color: var(--main-color);
 }
 
+.project-section pre {
+    background: #0a0f14;
+    border: 1px solid var(--main-color);
+    border-radius: 0.8rem;
+    padding: 1.5rem 1.8rem;
+    overflow-x: auto;
+    margin: 1.2rem 0;
+}
+
+.project-section pre code {
+    font-family: 'Courier New', monospace;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: #d6d6d6;
+    white-space: pre;
+}
+
+.project-section .code-caption {
+    font-family: 'Courier New', monospace;
+    font-size: 1.3rem;
+    color: var(--main-color);
+    margin-bottom: 0.5rem;
+}
+
 .project-figures {
     display: grid;
     /* auto-fit : une seule figure occupe toute la largeur, deux se partagent l'espace */
