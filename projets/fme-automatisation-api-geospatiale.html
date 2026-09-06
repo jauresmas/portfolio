@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatisation de la collecte et de la conversion de données géospatiales avec FME : Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Workflow FME Workbench automatisant l'acquisition de données géographiques depuis une API et leur export simultané vers plusieurs formats SIG.">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/fme-automatisation-api-geospatiale.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Automatisation de la collecte et de la conversion de données géospatiales avec FME : Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="Workflow FME Workbench automatisant l'acquisition de données géographiques depuis une API et leur export simultané vers plusieurs formats SIG.">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/fme-automatisation-api-geospatiale.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Automatisation de la collecte et de la conversion de données géospatiales avec FME : Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="Workflow FME Workbench automatisant l'acquisition de données géographiques depuis une API et leur export simultané vers plusieurs formats SIG.">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+
+    <link rel="stylesheet" href="../code/portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Interopérabilité de données géospatiales · FME Workbench · Projet personnel, 2026</p>
+            <h1>Automatisation de la collecte et de la conversion de données géospatiales avec FME</h1>
+            <p class="project-subtitle">Un workflow FME transformant une API en exports SIG multi-formats</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Diffuser une même donnée géographique sur plusieurs plateformes SIG implique en général de la reformater plusieurs fois à la main : un export pour QGIS, un autre pour un client CAO, un troisième pour un tableur. Répété à chaque mise à jour, ce travail devient vite chronophage et source d'incohérences entre les versions diffusées. L'objectif de ce workflow est d'automatiser, de bout en bout, l'acquisition de données géographiques depuis une API, leur nettoyage et leur export simultané vers plusieurs formats, au sein d'un unique processus FME reproductible.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>Le workflow est construit sous FME Workbench et s'articule en cinq blocs fonctionnels (gestion de l'API, gestion des attributs, gestion des géométries, export des données et rapports), visibles sur le canevas ci-dessous :</p>
+            <ol>
+                <li>Connexion à l'API source via le transformer <code>HTTPCaller</code>.</li>
+                <li>Extraction et structuration de la réponse JSON avec <code>JSONFragmenter</code>.</li>
+                <li>Nettoyage et harmonisation des attributs (<code>AttributeExposer</code>, <code>AttributeRenamer</code>, <code>AttributeRemover</code>).</li>
+                <li>Reconstruction des géométries et attribution du système de coordonnées (<code>GeometryReplacer</code>, <code>CoordinateSystemSetter</code>).</li>
+                <li>Export simultané vers cinq formats : Shapefile, GeoJSON, GeoPackage, CSV et DWG.</li>
+                <li>Génération automatique d'un rapport HTML de traitement (<code>HTMLReportGenerator</code>), reprenant la localisation des entités sur fond de carte et le détail des attributs.</li>
+            </ol>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/fme-workflow-diagram.png" alt="Canevas FME Workbench du workflow : connexion API, gestion des attributs, gestion des géométries, export multi-formats et génération de rapport" class="portfolio-image">
+                <figcaption>Canevas FME Workbench du workflow complet</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/fme-rapport-html.png" alt="Rapport HTML généré automatiquement, avec carte de localisation des entités et tableau détaillé des attributs" class="portfolio-image">
+                <figcaption>Rapport HTML généré automatiquement en sortie du workflow</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>Une fois lancé, le workflow interroge l'API, nettoie et reprojette les données, puis produit en une seule exécution cinq fichiers d'export prêts à l'emploi ainsi qu'un rapport HTML de contrôle, sans aucune manipulation manuelle intermédiaire. Ce type d'automatisation fait gagner un temps considérable sur les mises à jour récurrentes et garantit surtout la cohérence des données diffusées sur les différentes plateformes SIG : un même jeu de données ne peut plus diverger d'un export à l'autre, puisque tous proviennent de la même chaîne de traitement. L'intérêt de FME tient précisément à cette capacité à centraliser l'ensemble de la chaîne, de la collecte à la diffusion, au sein d'un processus unique, visuel et facilement maintenable.</p>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaur%C3%A8s-daa-hingbanon-aa8a7517a/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet personnel.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>
