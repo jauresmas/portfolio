@@ -58,11 +58,19 @@
             </ol>
         </div>
 
-        <div class="project-figures" id="projectFigures">
+        <div class="project-figures">
             <figure class="project-figure">
                 <img src="../img/projets/fme-velib-workflow-diagram.png" alt="Canevas FME Workbench du pipeline Vélib' avec aperçu des données extraites et export vers PostgreSQL et ArcGIS Online" class="portfolio-image">
                 <figcaption>Canevas FME du pipeline, avec aperçu des 230 stations extraites</figcaption>
             </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>Une seule exécution du workflow met à jour les 230 stations dans la base PostgreSQL/PostGIS, republie la couche correspondante sur ArcGIS Online et régénère le rapport HTML, sans qu'aucune de ces trois sorties ne nécessite de reprise manuelle. L'équipe base de données dispose ainsi d'un historique interrogeable en SQL, l'équipe webmapping d'une couche cloud toujours à jour, et un simple lien HTML suffit pour un suivi ponctuel de la disponibilité par station. Ce pipeline illustre l'intérêt de FME au-delà d'un simple outil de conversion de formats : centraliser dans un flux unique la collecte, la structuration et la diffusion multi-cibles d'une donnée qui change en continu.</p>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
             <figure class="project-figure">
                 <img src="../img/projets/fme-velib-arcgis-online.png" alt="Couche velib_paris publiée sur ArcGIS Online, avec les stations affichées sur une carte de l'Île-de-France" class="portfolio-image">
                 <figcaption>Couche des stations Vélib' publiée sur ArcGIS Online</figcaption>
@@ -75,11 +83,6 @@
                 <img src="../img/projets/fme-velib-rapport-html.png" alt="Rapport HTML généré automatiquement, avec carte des stations Vélib' et tableau de disponibilité en temps réel" class="portfolio-image">
                 <figcaption>Rapport HTML de disponibilité généré automatiquement</figcaption>
             </figure>
-        </div>
-
-        <div class="project-section">
-            <h2>Résultats</h2>
-            <p>Une seule exécution du workflow met à jour les 230 stations dans la base PostgreSQL/PostGIS, republie la couche correspondante sur ArcGIS Online et régénère le rapport HTML, sans qu'aucune de ces trois sorties ne nécessite de reprise manuelle. L'équipe base de données dispose ainsi d'un historique interrogeable en SQL, l'équipe webmapping d'une couche cloud toujours à jour, et un simple lien HTML suffit pour un suivi ponctuel de la disponibilité par station. Ce pipeline illustre l'intérêt de FME au-delà d'un simple outil de conversion de formats : centraliser dans un flux unique la collecte, la structuration et la diffusion multi-cibles d'une donnée qui change en continu.</p>
         </div>
 
         <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
