@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrôle et normalisation de plans DWG pour un réseau d'eau avec FME : Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Workflow FME structurant un plan DWG de réseau d'eau (Orléans) en couches SIG normalisées : points classés par type d'ouvrage et canalisations aux attributs nettoyés.">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/fme-dwg-reseau-eau.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contrôle et normalisation de plans DWG pour un réseau d'eau avec FME : Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="Workflow FME structurant un plan DWG de réseau d'eau (Orléans) en couches SIG normalisées : points classés par type d'ouvrage et canalisations aux attributs nettoyés.">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/fme-dwg-reseau-eau.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contrôle et normalisation de plans DWG pour un réseau d'eau avec FME : Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="Workflow FME structurant un plan DWG de réseau d'eau (Orléans) en couches SIG normalisées : points classés par type d'ouvrage et canalisations aux attributs nettoyés.">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+
+    <link rel="stylesheet" href="../code/portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Interopérabilité de données géospatiales · FME Workbench · Mission, 2026</p>
+            <h1>Contrôle et normalisation de plans DWG pour un réseau d'eau</h1>
+            <p class="project-subtitle">Structurer un plan CAO du réseau d'eau d'Orléans en couches SIG exploitables</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Les bureaux d'études et les gestionnaires de réseaux reçoivent encore aujourd'hui une grande quantité de plans techniques au format DWG. Avant leur intégration dans un SIG ou une base de données, un travail de contrôle et de normalisation est souvent nécessaire : les entités y sont organisées par calques CAO (vannes, incendie, compteurs, canalisations) plutôt que par thème SIG, le système de coordonnées n'est pas toujours renseigné, et les attributs bruts ne sont pas directement exploitables. Ce workflow a été conçu pour automatiser cette normalisation sur un plan du réseau d'eau de l'agglomération d'Orléans.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>Le plan CAO du réseau d'eau (format DWG) est lu directement dans FME Workbench, puis traité en plusieurs étapes :</p>
+            <ol>
+                <li>Séparation des entités ponctuelles et linéaires avec <code>GeometryFilter</code>.</li>
+                <li>Classification des points par type d'ouvrage à partir de leur calque CAO d'origine avec <code>TestFilter</code> : vannes, bouches et poteaux incendie, compteurs.</li>
+                <li>Attribution et contrôle du système de coordonnées (<code>CoordinateSystemSetter</code>, <code>Reprojector</code>).</li>
+                <li>Extraction des coordonnées X/Y de chaque point avec <code>CoordinateExtractor</code>, pour obtenir une couche géoréférencée directement exploitable dans un tableur ou une base de données.</li>
+                <li>Nettoyage et renommage des attributs des lignes de canalisation (<code>AttributeExposer</code>, <code>AttributeManager</code>, <code>AttributeRenamer</code>) et calcul automatique de leur longueur avec <code>LengthCalculator</code>.</li>
+            </ol>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/fme-dwg-reseau-eau-workflow.png" alt="Canevas FME Workbench du workflow de normalisation d'un plan DWG de réseau d'eau : séparation des géométries, classification des points par calque, extraction des coordonnées et nettoyage des canalisations" class="portfolio-image">
+                <figcaption>Canevas FME du workflow de normalisation du plan DWG</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>Le traitement produit trois couches directement exploitables à partir du plan DWG d'origine : une couche de points classés par type d'ouvrage (vannes, incendie, compteurs), une couche de points avec leurs coordonnées extraites en attributs, et une couche de canalisations aux attributs nettoyés et à la longueur calculée automatiquement. Cette normalisation supprime le travail de reprise manuelle habituellement nécessaire avant intégration dans un SIG, tout en garantissant une structure homogène et reproductible d'un plan à l'autre.</p>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaur%C3%A8s-daa-hingbanon-aa8a7517a/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Mission.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>
