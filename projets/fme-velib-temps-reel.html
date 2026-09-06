@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publication temps réel de données Vélib' avec FME : Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Workflow FME publiant en temps réel les stations Vélib' de Paris dans PostgreSQL/PostGIS et sur ArcGIS Online, avec rapport HTML de disponibilité.">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/fme-velib-temps-reel.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Publication temps réel de données Vélib' avec FME : Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="Workflow FME publiant en temps réel les stations Vélib' de Paris dans PostgreSQL/PostGIS et sur ArcGIS Online, avec rapport HTML de disponibilité.">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/fme-velib-temps-reel.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Publication temps réel de données Vélib' avec FME : Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="Workflow FME publiant en temps réel les stations Vélib' de Paris dans PostgreSQL/PostGIS et sur ArcGIS Online, avec rapport HTML de disponibilité.">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+
+    <link rel="stylesheet" href="../code/portofolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Interopérabilité de données géospatiales · FME Workbench · Mission, 2026</p>
+            <h1>Publication temps réel de données Vélib' avec FME</h1>
+            <p class="project-subtitle">Un pipeline publiant simultanément les stations parisiennes dans PostgreSQL/PostGIS et sur ArcGIS Online</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>La disponibilité des stations Vélib' change en continu, mais les besoins de restitution ne sont pas les mêmes selon les équipes : une équipe base de données veut interroger l'historique en SQL, une équipe webmapping veut publier une carte partageable, et un simple suivi ponctuel demande un rapport lisible sans outil SIG. Reconstruire manuellement ces trois sorties à chaque rafraîchissement des données serait à la fois lent et source d'écarts entre elles. L'objectif de ce workflow est d'interroger l'API Vélib' une seule fois et de publier automatiquement le même jeu de données vers ces trois destinations en une exécution.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>Le pipeline est construit sous FME Workbench :</p>
+            <ol>
+                <li>Connexion à l'API Vélib' via <code>HTTPCaller</code>.</li>
+                <li>Extraction de la réponse JSON avec <code>JSONExtractor</code>, puis fragmentation en une entité par station avec <code>JSONFragmenter</code> (230 stations).</li>
+                <li>Restructuration des attributs avec <code>AttributeRenamer</code> et <code>AttributeManager</code> : nom de station, code INSEE et arrondissement, capacité, vélos disponibles, places libres, horodatage de la dernière mise à jour.</li>
+                <li>Construction de la géométrie ponctuelle à partir des coordonnées (<code>VertexCreator</code>) et attribution du système de coordonnées (<code>CoordinateSystemSetter</code>).</li>
+                <li>Export double et simultané : écriture dans une table PostgreSQL/PostGIS et publication directe d'une couche sur ArcGIS Online, à partir du même flux de données.</li>
+                <li>Génération automatique d'un rapport HTML de suivi, combinant carte de localisation et tableau de disponibilité par station.</li>
+            </ol>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/fme-velib-workflow-diagram.png" alt="Canevas FME Workbench du pipeline Vélib' avec aperçu des données extraites et export vers PostgreSQL et ArcGIS Online" class="portfolio-image">
+                <figcaption>Canevas FME du pipeline, avec aperçu des 230 stations extraites</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/fme-velib-arcgis-online.png" alt="Couche velib_paris publiée sur ArcGIS Online, avec les stations affichées sur une carte de l'Île-de-France" class="portfolio-image">
+                <figcaption>Couche des stations Vélib' publiée sur ArcGIS Online</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/fme-velib-pgadmin.png" alt="Table veli_paris interrogée dans pgAdmin, avec nom de station, coordonnées, capacité et disponibilité" class="portfolio-image">
+                <figcaption>Table des stations interrogée dans PostgreSQL (pgAdmin)</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/fme-velib-rapport-html.png" alt="Rapport HTML généré automatiquement, avec carte des stations Vélib' et tableau de disponibilité en temps réel" class="portfolio-image">
+                <figcaption>Rapport HTML de disponibilité généré automatiquement</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Résultats</h2>
+            <p>Une seule exécution du workflow met à jour les 230 stations dans la base PostgreSQL/PostGIS, republie la couche correspondante sur ArcGIS Online et régénère le rapport HTML, sans qu'aucune de ces trois sorties ne nécessite de reprise manuelle. L'équipe base de données dispose ainsi d'un historique interrogeable en SQL, l'équipe webmapping d'une couche cloud toujours à jour, et un simple lien HTML suffit pour un suivi ponctuel de la disponibilité par station. Ce pipeline illustre l'intérêt de FME au-delà d'un simple outil de conversion de formats : centraliser dans un flux unique la collecte, la structuration et la diffusion multi-cibles d'une donnée qui change en continu.</p>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaur%C3%A8s-daa-hingbanon-aa8a7517a/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Mission.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>
