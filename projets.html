@@ -46,15 +46,11 @@
 
     <div class="filters" id="filters">
         <div class="filter-pill active" data-filter="all"><i class="fa-solid fa-border-all"></i> Tout <span class="count">23</span></div>
-        <div class="filter-pill" data-filter="arcgis">Applications ArcGIS <span class="count">3</span></div>
-        <div class="filter-pill" data-filter="missions">Missions <span class="count">2</span></div>
-        <div class="filter-pill" data-filter="webmapping">Webmapping &amp; outils SIG <span class="count">4</span></div>
-        <div class="filter-pill" data-filter="fme">Automatisation FME <span class="count">3</span></div>
-        <div class="filter-pill" data-filter="etudes">Études SIG - eau et environnement <span class="count">11</span></div>
     </div>
+    <p class="filter-hint">Cliquez sur le titre d'une catégorie pour n'afficher qu'elle</p>
 
     <div class="category-group" data-cat="arcgis">
-        <div class="category-header"><h3>Applications ArcGIS</h3><span class="cat-count">3 projets</span></div>
+        <div class="category-header" data-filter="arcgis"><h3>Applications ArcGIS</h3><span class="cat-count">3 projets</span></div>
         <div class="services-container">
             <div class="service-box">
                 <div class="service-info">
@@ -86,7 +82,7 @@
     </div>
 
     <div class="category-group" data-cat="missions">
-        <div class="category-header"><h3>Missions</h3><span class="cat-count">2 projets</span></div>
+        <div class="category-header" data-filter="missions"><h3>Missions</h3><span class="cat-count">2 projets</span></div>
         <div class="services-container">
             <div class="service-box">
                 <div class="service-info">
@@ -109,7 +105,7 @@
     </div>
 
     <div class="category-group" data-cat="webmapping">
-        <div class="category-header"><h3>Webmapping &amp; outils SIG</h3><span class="cat-count">4 projets</span></div>
+        <div class="category-header" data-filter="webmapping"><h3>Webmapping &amp; outils SIG</h3><span class="cat-count">4 projets</span></div>
         <div class="services-container">
             <div class="service-box">
                 <div class="service-info">
@@ -150,7 +146,7 @@
     </div>
 
     <div class="category-group" data-cat="fme">
-        <div class="category-header"><h3>Automatisation FME</h3><span class="cat-count">3 projets</span></div>
+        <div class="category-header" data-filter="fme"><h3>Automatisation FME</h3><span class="cat-count">3 projets</span></div>
         <div class="services-container">
             <div class="service-box">
                 <div class="service-info">
@@ -182,7 +178,7 @@
     </div>
 
     <div class="category-group" data-cat="etudes">
-        <div class="category-header"><h3>Études SIG - eau et environnement</h3><span class="cat-count">11 projets</span></div>
+        <div class="category-header" data-filter="etudes"><h3>Études SIG - eau et environnement</h3><span class="cat-count">11 projets</span></div>
         <div class="services-container">
             <div class="service-box">
                 <div class="service-info">
@@ -310,19 +306,29 @@
     <script src="code/particles.min.js"></script>
     <script src="code/portofolio.js"></script>
     <script>
-        const filtersEl = document.getElementById('filters');
-        if (filtersEl) {
-            filtersEl.addEventListener('click', (e) => {
-                const pill = e.target.closest('.filter-pill');
-                if (!pill) return;
-                filtersEl.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
-                const filter = pill.dataset.filter;
+        (function () {
+            const allPill = document.querySelector('.filter-pill[data-filter="all"]');
+            const headers = document.querySelectorAll('.category-header');
+
+            function applyFilter(filter) {
                 document.querySelectorAll('.category-group').forEach(g => {
                     g.classList.toggle('hidden', filter !== 'all' && g.dataset.cat !== filter);
                 });
+                if (allPill) allPill.classList.toggle('active', filter === 'all');
+                headers.forEach(h => h.classList.toggle('active', h.dataset.filter === filter));
+            }
+
+            if (allPill) {
+                allPill.addEventListener('click', () => applyFilter('all'));
+            }
+
+            headers.forEach(header => {
+                header.addEventListener('click', () => {
+                    const isActive = header.classList.contains('active');
+                    applyFilter(isActive ? 'all' : header.dataset.filter);
+                });
             });
-        }
+        })();
     </script>
 </body>
 
