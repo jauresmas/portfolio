@@ -449,15 +449,6 @@ span{
     display: none;
 }
 
-.filter-hint {
-    text-align: center;
-    font-size: 1.2rem;
-    font-style: italic;
-    color: #9fd8dd;
-    opacity: 0.7;
-    margin-bottom: 4rem;
-}
-
 .category-header {
     margin-bottom: 2.4rem;
     padding-bottom: 1.2rem;
