@@ -46,8 +46,12 @@
 
     <div class="filters" id="filters">
         <div class="filter-pill active" data-filter="all"><i class="fa-solid fa-border-all"></i> Tout <span class="count">23</span></div>
+        <div class="filter-pill" data-filter="arcgis">Applications ArcGIS <span class="count">3</span></div>
+        <div class="filter-pill" data-filter="missions">Missions <span class="count">2</span></div>
+        <div class="filter-pill" data-filter="webmapping">Webmapping &amp; outils SIG <span class="count">4</span></div>
+        <div class="filter-pill" data-filter="fme">Automatisation FME <span class="count">3</span></div>
+        <div class="filter-pill" data-filter="etudes">Études SIG - eau et environnement <span class="count">11</span></div>
     </div>
-    <p class="filter-hint">Cliquez sur le titre d'une catégorie pour n'afficher qu'elle</p>
 
     <div class="category-group" data-cat="arcgis">
         <div class="category-header" data-filter="arcgis"><h3>Applications ArcGIS</h3><span class="cat-count">3 projets</span></div>
@@ -307,20 +311,20 @@
     <script src="code/portofolio.js"></script>
     <script>
         (function () {
-            const allPill = document.querySelector('.filter-pill[data-filter="all"]');
+            const pills = document.querySelectorAll('.filter-pill');
             const headers = document.querySelectorAll('.category-header');
 
             function applyFilter(filter) {
                 document.querySelectorAll('.category-group').forEach(g => {
                     g.classList.toggle('hidden', filter !== 'all' && g.dataset.cat !== filter);
                 });
-                if (allPill) allPill.classList.toggle('active', filter === 'all');
-                headers.forEach(h => h.classList.toggle('active', h.dataset.filter === filter));
+                pills.forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+                headers.forEach(h => h.classList.toggle('active', filter !== 'all' && h.dataset.filter === filter));
             }
 
-            if (allPill) {
-                allPill.addEventListener('click', () => applyFilter('all'));
-            }
+            pills.forEach(pill => {
+                pill.addEventListener('click', () => applyFilter(pill.dataset.filter));
+            });
 
             headers.forEach(header => {
                 header.addEventListener('click', () => {
