@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Référentiel Urbanisme : visualiseur PLUi interactif avec pré-instruction automatique — Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Visualiseur PLUi interactif développé en JavaScript vanilla (SVG) : zonage, cadastre, bâti en extrusion et pré-instruction automatique d'un projet de construction, à partir de données ouvertes MEL/IGN/DGFiP.">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/referentiel-urbanisme-plui-interactif.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Référentiel Urbanisme : visualiseur PLUi interactif avec pré-instruction automatique — Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="Visualiseur PLUi interactif développé en JavaScript vanilla (SVG) : zonage, cadastre, bâti en extrusion et pré-instruction automatique d'un projet de construction, à partir de données ouvertes MEL/IGN/DGFiP.">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/referentiel-urbanisme-plui-interactif.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Référentiel Urbanisme : visualiseur PLUi interactif avec pré-instruction automatique — Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="Visualiseur PLUi interactif développé en JavaScript vanilla (SVG) : zonage, cadastre, bâti en extrusion et pré-instruction automatique d'un projet de construction, à partir de données ouvertes MEL/IGN/DGFiP.">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+
+    <link rel="stylesheet" href="../code/portofolio.css?v=3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Webmapping & urbanisme réglementaire · JavaScript vanilla (SVG) · Projet personnel, 2026</p>
+            <h1>Référentiel Urbanisme</h1>
+            <p class="project-subtitle">Un visualiseur PLUi interactif qui croise zonage, cadastre et hauteur du bâti pour préqualifier un projet avant instruction</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Consulter un règlement de PLUi pour vérifier la constructibilité d'un projet suppose aujourd'hui de croiser plusieurs documents distincts : le plan de zonage, le règlement écrit propre à chaque zone, le plan des hauteurs, et le parcellaire cadastral. Ce travail, généralement mené à la main à partir de PDF, ralentit la préqualification d'un projet aussi bien pour un porteur de projet que pour un service instructeur. Au-delà de l'outil produit, ce projet a aussi été l'occasion de développer mes compétences sur un terrain que mes projets précédents n'abordaient pas encore : construire moi-même un moteur de rendu géospatial, sans dépendre d'une bibliothèque cartographique existante, et apprendre à transformer des documents réglementaires bruts en logique métier exploitable. Référentiel Urbanisme réunit ces sources dans une interface unique : sélectionner une parcelle affiche directement ses règles réelles, et un module de pré-instruction compare en direct un projet hypothétique à ces règles.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Données</h2>
+            <p>L'application s'appuie uniquement sur des données ouvertes officielles, portant sur plusieurs communes de la Métropole Européenne de Lille (MEL) : le zonage et les prescriptions du PLUi en vigueur (data.gouv.fr, Licence Ouverte 2.0), le parcellaire et le bâti (Cadastre Etalab / DGFiP), et les limites communales (MEL / IGN / INSEE). Les sous-secteurs réels du PLUi (UCO, UEP, UE/UX, AUc, AUs, NJ...) sont regroupés par grande famille réglementaire (U, AU, A, N) pour la lecture cartographique, tout en conservant le sous-secteur précis dans la fiche de chaque parcelle.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Démarche technique</h2>
+            <p>Le rendu cartographique (zonage, parcellaire, extrusion du bâti, pan/zoom, sélection de parcelle par point-in-polygon) est entièrement développé en JavaScript, sans bibliothèque cartographique : la carte est un document SVG généré et manipulé directement en DOM. Le bâti est affiché en extrusion à l'échelle de sa hauteur réelle : en bleu lorsque cette hauteur provient du plan des hauteurs officiel du PLUi, obtenue par analyse colorimétrique de ce document raster géoréférencé, et en gris lorsqu'elle est estimée par défaut faute de donnée porteuse sur la parcelle. Cette distinction visuelle donne une indication immédiate de la fiabilité de l'information affichée.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Pré-instruction automatique</h2>
+            <p>Chaque parcelle sélectionnée affiche sa fiche réglementaire réelle : surface cadastrale, hauteur maximale, emprise au sol autorisée, recul par rapport à la voirie, distance à l'ouvrage d'assainissement le plus proche. Un module de simulation permet ensuite de saisir la hauteur et l'emprise au sol d'un projet hypothétique et de les confronter directement à ces règles. Sur une parcelle de la zone UCO6.1 à Capinghem (1 981 m², hauteur maximale 13 m absolue soit 10 m en façade, emprise au sol maximale 40 %), un projet de 11 m pour 30 % d'emprise est ainsi validé conforme ; sur une parcelle agricole, le même module bloque correctement toute simulation en indiquant la zone non constructible. Le résultat est systématiquement présenté comme une simulation non opposable, et non comme une décision d'instruction.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Résultats et portée</h2>
+            <p>Cette maquette démontre la faisabilité d'un outil de préqualification réglementaire construit uniquement à partir de données ouvertes et de développement web natif, sans dépendance à un SDK cartographique. Deux modules complémentaires (historique des instructions, rapports) figurent déjà dans l'interface comme prochaine étape de développement. Ce projet m'a permis de monter en compétence sur le développement JavaScript bas niveau (rendu SVG, géométrie, interaction) et sur la lecture de documents réglementaires officiels, deux domaines que je voulais renforcer au-delà de mes outils SIG habituels (QGIS, FME, PostGIS).</p>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/referentiel-urbanisme-plan-zonage-interactif.png" alt="Interface complète de Référentiel Urbanisme : carte de zonage PLUi, fiche parcelle Capinghem AE 370 et pré-instruction automatique validée conforme" class="portfolio-image">
+                <figcaption>Interface complète : plan de zonage, fiche parcelle et pré-instruction automatique</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <a href="https://jauresmas.github.io/ref_urban/" class="btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Voir le site en ligne
+            </a>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaur%C3%A8s-daa-hingbanon-aa8a7517a/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet personnel.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>
