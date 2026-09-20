@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
 
 * {
     margin: 0;
@@ -9,7 +8,7 @@
     border: none;
     outline: none;
     scroll-behavior: smooth;
-    font-family: 'Poppins',sans-serif;
+    font-family: var(--body-font);
 }
 
 :root{
@@ -17,6 +16,24 @@
     --second-bg-color: #161616;
     --text-color: #fff;
     --main-color: #12f7ff;
+    --body-font: 'Poppins', sans-serif;
+    --heading-font: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* Accent technique sur les titres : Poppins reste la police de lecture partout ailleurs */
+h1,
+.home-content h3,
+.services .heading,
+.Portfolio .heading,
+.skills .heading,
+.formations .heading,
+.education .heading,
+.contact h2,
+.education .content h2,
+.education .content .date,
+.service-info h4,
+.Portfolio-info h4 {
+    font-family: var(--heading-font);
 }
 
 
@@ -32,7 +49,7 @@ body{
         linear-gradient(180deg, var(--bg-color) 0%, var(--second-bg-color) 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: "Poppins" sans-serif;
+    font-family: var(--body-font);
     color: var(--text-color);
 }
 
@@ -946,14 +963,13 @@ span{
 .education .content h2 {
     position: relative; /* sert de repère pour ::before/::after ci-dessous, sinon ils se
                             dimensionnent par rapport à .content entier et débordent de la carte */
-    font-size: 24px; /* Taille du titre */
-    font-family: 'Press Start 2P', cursive; /* Police de caractères */
+    font-size: 22px; /* Taille du titre */
+    font-weight: 700;
     color: #fff; /* text color */
     text-align: center; /* Centrage du texte */
     margin-bottom: 10px; /* Marge en bas */
     text-shadow: 0 0 10px #12f7ff, 0 0 20px #12f7ff, 0 0 30px #12f7ff, 0 0 40px #12f7ff, 0 0 50px #12f7ff, 0 0 60px #12f7ff; /* Ajoute une ombre avec des couleurs */
-    overflow-wrap: break-word; /* la police 'Press Start 2P' est large : un mot comme
-                                   "Université" peut à lui seul dépasser la carte sur petit écran */
+    overflow-wrap: break-word;
 }
 
 .education .content h2::before,
@@ -1012,8 +1028,8 @@ span{
     padding: 5px 10px; /* Ajoute un peu de marge intérieure */
     border-radius: 5px; /* Ajoute des coins arrondis */
     display: none; /* Masque la date par défaut */
-    font-family: 'Press Start 2P', cursive; /* Utilise une police de style gaming */
-    font-size: 14px; /* Taille de la police */
+    font-weight: 700;
+    font-size: 13px; /* Taille de la police */
     letter-spacing: 1px; /* Espacement des caractères */
     text-align: center; /* Centre le texte */
     text-transform: uppercase; /* Met le texte en majuscules */
@@ -1548,7 +1564,7 @@ footer .copyright{
     }
 
     .education .content h2 {
-        font-size: 18px; /* le titre "Press Start 2P" en 24px déborde des cartes sur mobile */
+        font-size: 18px;
     }
 
     .education .container::after {
