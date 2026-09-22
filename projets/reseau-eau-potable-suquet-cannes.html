@@ -65,17 +65,17 @@
 
         <div class="project-section">
             <h2>Données et structuration SIG</h2>
-            <p>Le projet QGIS s'appuie sur le bâti et la voirie réels du secteur (BD TOPO IGN, 410 bâtiments et 133 tronçons de voirie) comme fond de plan, sur lequel a été construite une base réseau en 5 couches, réunies dans un même GeoPackage : 133 tronçons de canalisation (matériau, diamètre, date de pose, état, longueur), 152 nœuds de réseau (vannes, regards, poteaux incendie, ventouses), 60 branchements caractérisés, et 22 interventions de gestion. L'ensemble est structuré en Lambert-93 (EPSG:2154), et chaque couche métier est symbolisée par classification thématique sur son attribut clé (état, type de nœud, type d'intervention).</p>
+            <p>Le projet QGIS s'appuie sur le bâti et la voirie réels du secteur (BD TOPO IGN, 410 bâtiments et 133 tronçons de voirie) comme fond de plan, sur lequel a été construite une base réseau en 5 couches : 133 tronçons de canalisation (matériau, diamètre, date de pose, état, longueur), 152 nœuds de réseau (vannes, regards, poteaux incendie, ventouses), 60 branchements caractérisés, et 22 interventions de gestion. Cette base est disponible sous deux formes : un GeoPackage pour l'usage QGIS, et une base PostgreSQL/PostGIS (7 tables) interrogeable en SQL. L'ensemble est structuré en Lambert-93 (EPSG:2154), et chaque couche métier est symbolisée par classification thématique sur son attribut clé (état, type de nœud, type d'intervention).</p>
         </div>
 
         <div class="project-section">
             <h2>Contrôle qualité</h2>
-            <p>Avant toute analyse, la base a été passée au crible de plusieurs contrôles automatisés : complétude des attributs critiques, absence de doublons géométriques, et cohérence référentielle entre les 60 branchements et 22 interventions et leurs tronçons de canalisation associés — aucune anomalie détectée sur ces trois points. Un contrôle topologique complémentaire (rattachement des 266 extrémités de tronçon aux 152 nœuds du réseau, tolérance 0,5 m) a en revanche révélé 54 extrémités non raccordées à moins de 3 m d'un nœud, correspondant pour partie à des limites du secteur d'étude et pour partie à des écarts de saisie à corriger.</p>
+            <p>Avant toute analyse, la base a été passée au crible de plusieurs contrôles automatisés : complétude des attributs critiques, absence de doublons géométriques, et cohérence référentielle entre les 60 branchements et 22 interventions et leurs tronçons de canalisation associés, aucune anomalie détectée sur ces trois points. Un contrôle topologique complémentaire (rattachement des 266 extrémités de tronçon aux 152 nœuds du réseau, tolérance 0,5 m) a en revanche révélé 54 extrémités non raccordées à moins de 3 m d'un nœud, correspondant pour partie à des limites du secteur d'étude et pour partie à des écarts de saisie à corriger.</p>
         </div>
 
         <div class="project-section">
             <h2>Diagnostic patrimonial</h2>
-            <p>Sur les 6,43 km de réseau saisis, la classification par état distingue 56 tronçons vétustes (42 %), 34 à surveiller (26 %) et 43 en bon état (32 %) — une répartition qui permettrait, sur un réseau réel, de prioriser les travaux de renouvellement par secteur. Les canalisations se répartissent entre quatre matériaux (fonte, PVC, acier, PEHD), reflet des différentes générations de pose.</p>
+            <p>Sur les 6,43 km de réseau saisis, la classification par état distingue 56 tronçons vétustes (42 %), 34 à surveiller (26 %) et 43 en bon état (32 %), une répartition qui permettrait, sur un réseau réel, de prioriser les travaux de renouvellement par secteur. Les canalisations se répartissent entre quatre matériaux (fonte, PVC, acier, PEHD), reflet des différentes générations de pose.</p>
         </div>
 
         <div class="project-figures">
@@ -90,21 +90,21 @@
             <p>Les 22 interventions enregistrées (9 purges, 5 curages préventifs, 5 inspections caméra, 2 fuites, 1 réparation) représentent un coût cumulé de 23 127 €, chacune rattachée à son tronçon de canalisation.</p>
         </div>
 
+        <div class="project-section">
+            <h2>Analyses complémentaires</h2>
+            <p>Au-delà de la restitution cartographique, une jointure entre les interventions et les canalisations a été conduite sous QGIS pour aller plus loin dans le diagnostic : les tronçons vétustes concentrent 12 interventions pour 56 tronçons (0,21 par tronçon), contre seulement 4 pour 43 tronçons en bon état (0,09), soit un taux d'intervention 2,3 fois plus élevé, une corrélation qui confirme la pertinence de la classification par état.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Résultats et portée</h2>
+            <p>L'ensemble aboutit à un plan général thématique du réseau, mis en page avec légende complète, échelle et repère nord, ainsi qu'une base de données PostgreSQL/PostGIS reproduisant la même structure que le GeoPackage QGIS. Ce projet m'a permis de structurer une base de données patrimoniale complète et de manipuler les tâches concrètes d'un poste de technicien SIG réseaux d'eau : saisie, contrôle qualité, diagnostic et restitution cartographique. Il m'a surtout permis de renforcer mes compétences sur la structuration de bases de données spatiales et l'analyse patrimoniale de réseaux, un domaine que je voulais approfondir au-delà de mes projets précédents.</p>
+        </div>
+
         <div class="project-figures" id="projectFigures">
             <figure class="project-figure">
                 <img src="../img/projets/reseau-eau-potable-suquet-plan-general.png" alt="Plan général du réseau d'eau potable du Suquet à Cannes, avec classification des canalisations par état, nœuds de réseau et interventions" class="portfolio-image">
                 <figcaption>Plan général du réseau d'eau potable, avec légende complète, échelle et repère nord</figcaption>
             </figure>
-        </div>
-
-        <div class="project-section">
-            <h2>Analyses complémentaires</h2>
-            <p>Au-delà de la restitution cartographique, une jointure entre les interventions et les canalisations a été conduite sous QGIS pour aller plus loin dans le diagnostic : les tronçons vétustes concentrent 12 interventions pour 56 tronçons (0,21 par tronçon), contre seulement 4 pour 43 tronçons en bon état (0,09), soit un taux d'intervention 2,3 fois plus élevé — une corrélation qui confirme la pertinence de la classification par état.</p>
-        </div>
-
-        <div class="project-section">
-            <h2>Résultats et portée</h2>
-            <p>L'ensemble aboutit à un plan général thématique du réseau, mis en page avec légende complète, échelle et repère nord. Ce projet m'a permis de structurer une base de données patrimoniale complète et de manipuler les tâches concrètes d'un poste de technicien SIG réseaux d'eau : saisie, contrôle qualité, diagnostic et restitution cartographique.</p>
         </div>
 
         <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
