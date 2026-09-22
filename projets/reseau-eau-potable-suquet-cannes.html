@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réseau d'eau potable du Suquet | Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Démonstration de gestion SIG patrimoniale d'un réseau d'eau potable : structuration de base de données, contrôle qualité et suivi des interventions.">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/reseau-eau-potable-suquet-cannes.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Réseau d'eau potable du Suquet | Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="Démonstration de gestion SIG patrimoniale d'un réseau d'eau potable : structuration de base de données, contrôle qualité et suivi des interventions.">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/reseau-eau-potable-suquet-cannes.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Réseau d'eau potable du Suquet | Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="Démonstration de gestion SIG patrimoniale d'un réseau d'eau potable : structuration de base de données, contrôle qualité et suivi des interventions.">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+    <link rel="stylesheet" href="../code/portofolio.css?v=8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Réseau d'eau potable du Suquet",
+      "description": "Démonstration de gestion SIG patrimoniale d'un réseau d'eau potable : structuration de base de données, contrôle qualité et suivi des interventions.",
+      "url": "https://jauresmas.github.io/portfolio/projets/reseau-eau-potable-suquet-cannes.html",
+      "image": "https://jauresmas.github.io/portfolio/img/home3.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Jaurès DAA-HINGBANON",
+        "url": "https://jauresmas.github.io/portfolio/"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">SIG patrimonial · Réseaux d'eau potable · QGIS/PostGIS · Projet personnel, 2025</p>
+            <h1>Réseau d'eau potable du Suquet</h1>
+            <p class="project-subtitle">Une démonstration de gestion SIG patrimoniale : saisie, diagnostic et suivi des interventions</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>La gestion patrimoniale d'un réseau d'eau potable repose sur un travail de fond souvent invisible : saisir chaque nouveau tronçon et chaque branchement dans le SIG, tenir à jour l'état des canalisations, et consigner chaque intervention terrain (fuite, curage, réparation). Ce projet reconstitue ce travail de technicien SIG réseaux sur un secteur réel du Suquet à Cannes : la base de données et ses attributs (état, matériau, coûts d'intervention) sont simulés à des fins de démonstration, mais leur structure et leur volumétrie reproduisent celles d'une base patrimoniale réelle.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Données et structuration SIG</h2>
+            <p>Le projet QGIS s'appuie sur le bâti et la voirie réels du secteur (BD TOPO IGN, 410 bâtiments et 133 tronçons de voirie) comme fond de plan, sur lequel a été construite une base réseau en 5 couches, réunies dans un même GeoPackage : 133 tronçons de canalisation (matériau, diamètre, date de pose, état, longueur), 152 nœuds de réseau (vannes, regards, poteaux incendie, ventouses), 60 branchements caractérisés, et 22 interventions de gestion. L'ensemble est structuré en Lambert-93 (EPSG:2154), et chaque couche métier est symbolisée par classification thématique sur son attribut clé (état, type de nœud, type d'intervention).</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contrôle qualité</h2>
+            <p>Avant toute analyse, la base a été passée au crible de plusieurs contrôles automatisés : complétude des attributs critiques, absence de doublons géométriques, et cohérence référentielle entre les 60 branchements et 22 interventions et leurs tronçons de canalisation associés — aucune anomalie détectée sur ces trois points. Un contrôle topologique complémentaire (rattachement des 266 extrémités de tronçon aux 152 nœuds du réseau, tolérance 0,5 m) a en revanche révélé 54 extrémités non raccordées à moins de 3 m d'un nœud, correspondant pour partie à des limites du secteur d'étude et pour partie à des écarts de saisie à corriger.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Diagnostic patrimonial</h2>
+            <p>Sur les 6,43 km de réseau saisis, la classification par état distingue 56 tronçons vétustes (42 %), 34 à surveiller (26 %) et 43 en bon état (32 %) — une répartition qui permettrait, sur un réseau réel, de prioriser les travaux de renouvellement par secteur. Les canalisations se répartissent entre quatre matériaux (fonte, PVC, acier, PEHD), reflet des différentes générations de pose.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Suivi des interventions</h2>
+            <p>Les 22 interventions enregistrées (9 purges, 5 curages préventifs, 5 inspections caméra, 2 fuites, 1 réparation) représentent un coût cumulé de 23 127 €, chacune rattachée à son tronçon de canalisation.</p>
+        </div>
+
+        <div class="project-figures" id="projectFigures">
+            <figure class="project-figure">
+                <img src="../img/projets/reseau-eau-potable-suquet-plan-general.png" alt="Plan général du réseau d'eau potable du Suquet à Cannes, avec classification des canalisations par état, nœuds de réseau, interventions et plan de récolement de la rue Meynadier" class="portfolio-image">
+                <figcaption>Plan général du réseau d'eau potable, avec légende complète, échelle et repère nord</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Résultats et portée</h2>
+            <p>L'ensemble aboutit à un plan général thématique du réseau, mis en page avec légende complète, échelle et repère nord. Ce projet m'a permis de structurer une base de données patrimoniale complète et de manipuler les tâches concrètes d'un poste de technicien SIG réseaux d'eau : saisie, contrôle qualité, diagnostic et restitution cartographique.</p>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaur%C3%A8s-daa-hingbanon-aa8a7517a/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet personnel.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>
