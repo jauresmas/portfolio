@@ -139,12 +139,31 @@ section{
 }
 
 .home{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap:8rem;
     padding-top: 13rem;
     min-height: calc(100vh - 4.8rem);
+}
+
+#globeCanvas{
+    position: absolute;
+    top: 13rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(100% - 13rem);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.home-img,
+.home-content{
+    position: relative;
+    z-index: 1;
 }
 
 .availability-marquee{
@@ -223,7 +242,7 @@ span{
 
 .home-img img{
     position: relative;
-    width: 32vw;
+    width: 36vw;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     object-position: center 15%;
@@ -1496,6 +1515,10 @@ footer .copyright{
     .home-img img {
         width: 70vw;
         margin-top: 4rem;
+    }
+
+    #globeCanvas {
+        display: none;
     }
 
     .services {
