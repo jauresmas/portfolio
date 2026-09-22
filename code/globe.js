@@ -91,8 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Taille du globe calee sur la LARGEUR du canvas (pas la hauteur), pour
   // qu'une section d'accueil plein ecran (haute) ne fasse pas grossir le globe
-  const TARGET_WIDTH_FRACTION = 0.3;
-  const MAX_DIAMETER_PX = 460;
+  const TARGET_WIDTH_FRACTION = 0.22;
+  const MAX_DIAMETER_PX = 220;
   const fovRad = camera.fov * Math.PI / 180;
 
   function resize() {
