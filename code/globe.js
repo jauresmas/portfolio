@@ -89,12 +89,22 @@ document.addEventListener('DOMContentLoaded', function () {
   const rim = new THREE.Mesh(new THREE.SphereGeometry(R * 1.04, 48, 32), rimMat);
   group.add(rim);
 
+  // Taille du globe calee sur la LARGEUR du canvas (pas la hauteur), pour
+  // qu'une section d'accueil plein ecran (haute) ne fasse pas grossir le globe
+  const TARGET_WIDTH_FRACTION = 0.3;
+  const MAX_DIAMETER_PX = 460;
+  const fovRad = camera.fov * Math.PI / 180;
+
   function resize() {
     const w = canvas.clientWidth;
     const h = canvas.clientHeight;
     if (w === 0 || h === 0) return;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
+
+    const desiredDiameterPx = Math.min(w * TARGET_WIDTH_FRACTION, MAX_DIAMETER_PX);
+    camera.position.z = (h * R) / (Math.tan(fovRad / 2) * desiredDiameterPx);
+
     camera.updateProjectionMatrix();
   }
   window.addEventListener('resize', resize);
