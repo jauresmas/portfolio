@@ -68,6 +68,13 @@
             <p>Le projet QGIS s'appuie sur le bâti et la voirie réels du secteur (BD TOPO IGN, 410 bâtiments et 133 tronçons de voirie) comme fond de plan, sur lequel a été construite une base réseau en 5 couches : 133 tronçons de canalisation (matériau, diamètre, date de pose, état, longueur), 152 nœuds de réseau (vannes, regards, poteaux incendie, ventouses), 60 branchements caractérisés, et 22 interventions de gestion. Cette base est disponible sous deux formes : un GeoPackage pour l'usage QGIS, et une base PostgreSQL/PostGIS (7 tables) interrogeable en SQL. L'ensemble est structuré en Lambert-93 (EPSG:2154), et chaque couche métier est symbolisée par classification thématique sur son attribut clé (état, type de nœud, type d'intervention).</p>
         </div>
 
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/reseau-eau-potable-suquet-postgis.png" alt="Base de données PostgreSQL/PostGIS reseau_aep_cannes interrogée en SQL, avec les 7 tables du schéma et visualisation géométrique des branchements" class="portfolio-image">
+                <figcaption>Base PostgreSQL/PostGIS interrogée en SQL, avec visualisation géométrique des branchements</figcaption>
+            </figure>
+        </div>
+
         <div class="project-section">
             <h2>Contrôle qualité</h2>
             <p>Avant toute analyse, la base a été passée au crible de plusieurs contrôles automatisés : complétude des attributs critiques, absence de doublons géométriques, et cohérence référentielle entre les 60 branchements et 22 interventions et leurs tronçons de canalisation associés, aucune anomalie détectée sur ces trois points. Un contrôle topologique complémentaire (rattachement des 266 extrémités de tronçon aux 152 nœuds du réseau, tolérance 0,5 m) a en revanche révélé 54 extrémités non raccordées à moins de 3 m d'un nœud, correspondant pour partie à des limites du secteur d'étude et pour partie à des écarts de saisie à corriger.</p>
