@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LimnoTools, extension QGIS de limnologie | Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="LimnoTools, extension QGIS pour la bathymétrie, la morphométrie, la stratification thermique et l'état trophique des lacs, avec rapport d'étude automatisé.">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/limnotools-extension-qgis.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LimnoTools, extension QGIS de limnologie | Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="LimnoTools, extension QGIS pour la bathymétrie, la morphométrie, la stratification thermique et l'état trophique des lacs, avec rapport d'étude automatisé.">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/limnotools-extension-qgis.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LimnoTools, extension QGIS de limnologie | Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="LimnoTools, extension QGIS pour la bathymétrie, la morphométrie, la stratification thermique et l'état trophique des lacs, avec rapport d'étude automatisé.">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/home3.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+    <link rel="stylesheet" href="../code/portofolio.css?v=8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "LimnoTools",
+      "description": "LimnoTools, extension QGIS pour la bathymétrie, la morphométrie, la stratification thermique et l'état trophique des lacs, avec rapport d'étude automatisé.",
+      "url": "https://jauresmas.github.io/portfolio/projets/limnotools-extension-qgis.html",
+      "image": "https://jauresmas.github.io/portfolio/img/home3.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Jaurès DAA-HINGBANON",
+        "url": "https://jauresmas.github.io/portfolio/"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Développement d'outils SIG · Limnologie · Python · PyQGIS · Projet personnel, 2026</p>
+            <h1>LimnoTools</h1>
+            <p class="project-subtitle">Une extension QGIS qui transforme les données de terrain sur les lacs en cartes et en indicateurs limnologiques</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Pendant ma formation en géomatique et limnologie, nous avons travaillé sur des diagnostics de plans d'eau. Calculer la morphométrie d'un lac, tracer sa courbe hypsométrique ou diagnostiquer sa stratification thermique obligeait à enchaîner une dizaine d'outils QGIS, à terminer les calculs dans un tableur et à refaire la mise en page à la main, pour beaucoup de temps passé sur un seul lac. LimnoTools réunit ces analyses dans un seul panneau : à partir de sondages de profondeur, de profils de sonde multiparamètre et de mesures de qualité de l'eau, l'extension produit les cartes et les indicateurs de référence d'une étude de lac, de retenue ou de lagune, jusqu'au rapport final. Elle est gratuite, open source, en français et en anglais.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/limnotools-presentation.jpg" alt="Présentation de LimnoTools : analyser un lac dans QGIS, sans y passer des jours, avec la planche cartographique du diagnostic limnologique de la lagune de Nokoué" class="portfolio-image">
+                <figcaption>Présentation de l'extension et planche cartographique du diagnostic de la lagune de Nokoué</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/limnotools-avant-apres.jpg" alt="Comparaison avant et avec LimnoTools : une dizaine d'outils QGIS à enchaîner contre un panneau de 7 onglets et un rapport en un clic" class="portfolio-image">
+                <figcaption>Avant et avec LimnoTools : une dizaine d'outils enchaînés contre un panneau unique</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Démarche et outils</h2>
+            <p>L'extension est développée en Python avec PyQGIS et ne dépend que de GDAL et de NumPy, déjà fournis avec QGIS, ce qui évite toute installation supplémentaire. Chaque traitement est un algorithme Processing, utilisable dans la boîte à outils, le modeleur graphique, le traitement par lot ou un script Python, et un panneau placé à droite de la carte les rassemble dans une interface guidée : chaque résultat arrive sur la carte avec son style. Sept outils couvrent la chaîne d'étude :</p>
+            <ol>
+                <li><strong>Interpolation de la bathymétrie</strong> (TIN ou IDW) à partir des sondages, avec la rive forcée à 0 m, pour obtenir un raster de profondeur, les profondeurs maximale et moyenne et le volume.</li>
+                <li><strong>Isobathes et zones de profondeur</strong>, étiquetées et graduées.</li>
+                <li><strong>Morphométrie lacustre</strong> : superficie, longueur de rive, îles, longueur et largeur maximales, développement des rives, volume, profondeur relative et développement du volume.</li>
+                <li><strong>Courbe hypsométrique</strong> avec table de marnage et simulateur de baisse du niveau.</li>
+                <li><strong>Stratification thermique</strong> à partir des profils de sonde : thermocline, limites de l'épilimnion et de l'hypolimnion, oxycline, profondeur d'hypoxie, stabilité de Schmidt et volume de chaque couche.</li>
+                <li><strong>Fetch du vent</strong> : distance d'eau libre par direction et fetch effectif pour le vent dominant.</li>
+                <li><strong>Indice d'état trophique</strong> de Carlson à partir du Secchi, de la chlorophylle a et du phosphore total.</li>
+            </ol>
+            <p>Les formules suivent les références du domaine : Hutchinson, Wetzel, Håkanson, Carlson, le Shore Protection Manual et rLakeAnalyzer pour la stratification.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Résultats sur un cas réel : la lagune de Nokoué</h2>
+            <p>Pour les captures ci-dessous, l'extension a été testée sur le contour officiel de la lagune de Nokoué au Bénin (IGN, 18 400 sommets, 30 îles), avec des sondages, des stations et des profils de sonde simulés pour l'essai. Les valeurs de géométrie (superficie, rive, longueurs) viennent donc du vrai contour, alors que les profondeurs, les volumes et les indicateurs de qualité de l'eau sont ceux de données simulées : il s'agit d'une démonstration des outils, pas d'un diagnostic du lac.</p>
+            <p>Côté bathymétrie, les sondages sont interpolés en un raster de profondeur, avec isobathes et zones de profondeur, directement dans QGIS. La morphométrie donne sur ce contour une superficie de 107,44 km², 150,58 km de rives, une longueur maximale de 15,85 km et un développement des rives de 4,10, qui traduit un contour très découpé.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/limnotools-interface-qgis.jpg" alt="Interface de LimnoTools dans QGIS : panneau à droite de la carte, bathymétrie interpolée, isobathes et zones de profondeur de la lagune de Nokoué" class="portfolio-image">
+                <figcaption>Panneau LimnoTools dans QGIS : bathymétrie interpolée, isobathes et zones de profondeur</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/limnotools-morphometrie.jpg" alt="Résultats de morphométrie de la lagune de Nokoué : superficie 107,44 km², 30 îles, longueur de rive 150,58 km et développement des rives de 4,10" class="portfolio-image">
+                <figcaption>Morphométrie : les indices de référence calculés sur la forme réelle du lac</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <p>La courbe hypsométrique donne la surface et le volume à chaque profondeur, avec un curseur de baisse du niveau et une table exportable en CSV. Dans l'essai, une baisse de 0,95 m laisse 77 % de la surface mais seulement 49 % du volume, ce qui montre à quel point un faible marnage peut vider un lac peu profond. La stratification thermique, calculée à partir des profils de sonde, repère la thermocline, l'oxycline et la profondeur d'hypoxie : sur la station de démonstration, la colonne d'eau est stratifiée, avec une thermocline à 1,2 m et un hypolimnion qui représente 16 % du volume.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/limnotools-hypsometrie.jpg" alt="Courbe hypsométrique de la lagune de Nokoué avec simulateur de baisse du niveau : une baisse de 0,95 m conserve 77 % de la surface et 49 % du volume" class="portfolio-image">
+                <figcaption>Hypsométrie : que reste-t-il du lac si le niveau baisse</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/limnotools-stratification.jpg" alt="Profil de stratification thermique avec température et oxygène selon la profondeur, épilimnion, métalimnion et hypolimnion, thermocline à 1,2 m" class="portfolio-image">
+                <figcaption>Stratification thermique : profil de sonde et couches de la colonne d'eau</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <p>L'indice d'état trophique de Carlson classe chaque station de l'oligotrophe à l'hypereutrophe à partir de la transparence, de la chlorophylle et du phosphore : sur les 6 stations simulées, 3 sont eutrophes et 3 hypereutrophes, pour un TSI moyen de 70,5. Le fetch du vent complète le diagnostic en identifiant le site le plus exposé, avec un fetch le plus long de 13,04 km et un fetch effectif moyen de 4 714 m.</p>
+            <p>L'onglet Rapport rassemble ensuite toutes les analyses lancées dans une mise en page QGIS de 5 pages : planche cartographique, morphométrie et hypsométrie, stratification, qualité de l'eau, méthodes et références. Le nom du bureau d'études, l'auteur, le logo, la référence et les sources se saisissent une seule fois et sont réutilisés dans chaque rapport, dont la mise en page reste modifiable dans QGIS et s'exporte en PDF géoréférencé ou en rapport HTML complet.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/limnotools-trophie-fetch.jpg" alt="Résultats de l'indice d'état trophique de Carlson (TSI moyen 70,5, hypereutrophe) et du fetch du vent (13,04 km, site le plus exposé N2 nord)" class="portfolio-image">
+                <figcaption>État trophique de Carlson et fetch du vent, par station</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/limnotools-rapport.jpg" alt="Page du rapport d'étude généré par LimnoTools : morphométrie, bathymétrie, courbe hypsométrique et table hypsométrique" class="portfolio-image">
+                <figcaption>Rapport d'étude de 5 pages généré en un clic, modifiable dans QGIS</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Validation</h2>
+            <p>Les algorithmes sont validés sur des cas analytiques : pour un lac conique de rayon R et de profondeur H, le volume calculé correspond à &pi;R&sup2;H/3 à moins de 1 %. Une suite de tests de robustesse a aussi été exécutée sur des contours officiels et des données imparfaites : les lacs Nokoué et Ahémé au Bénin (IGN), 316 plans d'eau de la BD TOPO, et des fichiers de tableur avec virgule décimale, valeurs manquantes et profondeurs en double. L'extension est compatible de QGIS 3.28 LTR à QGIS 4.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Statut et téléchargement</h2>
+            <p>LimnoTools 1.0.0 est publié sous licence GNU GPL v2 ou ultérieure. L'extension inclut un jeu de démonstration entièrement synthétique, chargeable en un clic (un lac avec une île, 970 sondages, 7 stations et des profils de sonde sur deux campagnes) ; les contours réels ne sont pas distribués avec elle. Le code source, l'historique des versions et le suivi des problèmes sont disponibles sur GitHub, et l'archive ci-dessous s'installe directement dans QGIS.</p>
+            <a href="../downloads/limnotools-1.0.0.zip" class="btn" download>
+                <i class="fa-solid fa-download"></i> Télécharger l'extension (.zip)
+            </a>
+            <a href="https://github.com/jauresmas/limnotools" class="btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i> Voir le code sur GitHub
+            </a>
+        </div>
+
+        <div class="project-section">
+            <h2>Installation dans QGIS</h2>
+            <ol>
+                <li>Dans QGIS, ouvrir le menu <strong>Extensions</strong> puis <strong>Installer/Gérer les extensions</strong>.</li>
+                <li>Aller sur l'onglet <strong>Installer depuis un ZIP</strong>.</li>
+                <li>Cliquer sur le bouton « … » et sélectionner le fichier <code>limnotools-1.0.0.zip</code> téléchargé.</li>
+                <li>Cliquer sur <strong>Installer l'extension</strong>.</li>
+                <li>Cliquer sur le bouton LimnoTools de la barre d'outils, puis sur <strong>Charger la démo</strong> pour parcourir les onglets dans l'ordre.</li>
+            </ol>
+            <p>Les données doivent être dans un système de coordonnées projeté en mètres (Lambert 93, UTM...). Les profondeurs peuvent être positives ou stockées en altitudes négatives.</p>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaur%C3%A8s-daa-hingbanon-aa8a7517a/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet personnel, Licence GPL v2.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>
