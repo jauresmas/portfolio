@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ce que l'AIS ne montre pas, zones d'ombre en mer | Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Où le réseau AIS côtier perd les navires : 117,6 millions de messages traités dans PostGIS et H3, indice de vigilance, carte web et outil QGIS en données ouvertes.">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/ais-zones-d-ombre-maritime.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ce que l'AIS ne montre pas, zones d'ombre en mer | Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="Où le réseau AIS côtier perd les navires : 117,6 millions de messages traités dans PostGIS et H3, indice de vigilance, carte web et outil QGIS en données ouvertes.">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/ais-zones-d-ombre-maritime.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/projets/ais-carte-web.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ce que l'AIS ne montre pas, zones d'ombre en mer | Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="Où le réseau AIS côtier perd les navires : 117,6 millions de messages traités dans PostGIS et H3, indice de vigilance, carte web et outil QGIS en données ouvertes.">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/projets/ais-carte-web.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+    <link rel="stylesheet" href="../code/portofolio.css?v=9">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Ce que l'AIS ne montre pas, zones d'ombre en mer",
+      "description": "Où le réseau AIS côtier perd les navires : 117,6 millions de messages traités dans PostGIS et H3, indice de vigilance, carte web et outil QGIS en données ouvertes.",
+      "url": "https://jauresmas.github.io/portfolio/projets/ais-zones-d-ombre-maritime.html",
+      "image": "https://jauresmas.github.io/portfolio/img/projets/ais-carte-web.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Jaurès DAA-HINGBANON",
+        "url": "https://jauresmas.github.io/portfolio/"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Analyse spatiale · Données maritimes · PostgreSQL/PostGIS · H3 · QGIS · Webmapping · Projet personnel, 2026</p>
+            <h1>Ce que l'AIS ne montre pas</h1>
+            <p class="project-subtitle">Mesurer où le réseau AIS côtier perd la trace des navires, et ce que le radar satellite voit à sa place, dans les détroits danois et le bassin de Bornholm</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Le système d'identification automatique (AIS) fait émettre à chaque navire sa position et son identité. Depuis la côte, des stations radio les reçoivent, mais pas partout ni tout le temps : au large, la réception dépend de la portée et de la météo. Un navire qui « disparaît » n'a donc pas forcément éteint son émetteur. Ce projet sépare les silences ordinaires de ceux qu'aucune cause banale n'explique, et mesure où le réseau est aveugle.</p>
+            <p>Il porte sur une semaine de trafic, du 13 au 19 octobre 2026, dans les détroits danois et le bassin de Bornholm. Les indicateurs signalent des écarts au comportement attendu, pas des infractions. Aucun navire n'est nommé et les sorties publiques sont agrégées ou pseudonymisées. C'est un projet personnel, indépendant, réalisé uniquement à partir de données ouvertes.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/ais-carte-web.jpg" alt="Carte web interactive : histoires guidées, fiche de zone calculée dans le navigateur, silences AIS inexpliqués, doubles identités et passages lents sur câbles dans les détroits danois" class="portfolio-image">
+                <figcaption>La carte web : des histoires guidées et une fiche de zone calculée dans le navigateur</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Une semaine en chiffres</h2>
+            <ul>
+                <li>117,6 millions de messages AIS traités et 2 894 navires de classe A suivis.</li>
+                <li>3 880 silences AIS de 2 heures ou plus : 496 sont expliqués par les limites du réseau côtier, et 11 restent sans explication (10 navires), des transits silencieux en eaux pourtant bien couvertes.</li>
+                <li>10 navires dont l'identifiant MMSI est partagé par un autre émetteur, avec au moins trois sauts de position impossibles.</li>
+                <li>121 passages lents au-dessus de câbles ou de pipelines (moins de 2 nœuds pendant 30 minutes ou plus), pour 42 navires.</li>
+                <li>47 rencontres navire à navire (moins de 500 m pendant 2 heures ou plus), dont 45 au large de Skagen.</li>
+                <li>2 373 détections radar Sentinel-1 sur 13 passages de satellite, dont 238 sans AIS.</li>
+            </ul>
+            <p>Seules 9 % des positions en route tombent dans des cellules que le réseau ne couvre pas de façon fiable : l'essentiel du trafic est bien vu, et c'est ce qui donne du sens aux silences restants.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/ais-fiche-zone-etude-complete.jpg" alt="Fiche de zone A4 de la zone d'étude : carte des silences inexpliqués, doubles identités, passages sur câbles et rencontres en mer, avec les chiffres clés" class="portfolio-image">
+                <figcaption>Fiche de zone de la zone d'étude : carte, chiffres clés et origine des silences</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/ais-fiche-bassin-arkona-complete.jpg" alt="Fiche de zone A4 du bassin d'Arkona avec ses silences inexpliqués et ses passages lents au-dessus des câbles" class="portfolio-image">
+                <figcaption>Fiche de zone du bassin d'Arkona</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Démarche</h2>
+            <ol>
+                <li><strong>Données</strong> : sept fichiers journaliers de l'Autorité maritime danoise (4,3 Go), et des couches de référence : zones économiques exclusives, côtes, câbles, pipelines, parcs éoliens et mouillages.</li>
+                <li><strong>Nettoyage</strong> : 117,6 millions de lignes deviennent 9,3 millions de positions, en sept étapes journalisées. 28 % des lignes brutes sont des doublons exacts, et chaque enregistrement écarté est consigné avec son motif.</li>
+                <li><strong>PostGIS et H3</strong> : la couverture est mesurée par cellule H3 à partir du trafic réellement reçu, y compris une mesure des « navires perdus » en route, qui en déclasse 288.</li>
+                <li><strong>Indicateurs</strong> : silences classés en neuf catégories, identités en conflit, passages lents sur câbles et pipelines, rencontres en mer. Un silence n'est dit « inexpliqué » que si le navire est resté en eaux bien couvertes, si le réseau recevait ses voisins et s'il n'a pas eu le temps de sortir de la couverture.</li>
+                <li><strong>Indice de vigilance</strong> : le rang percentile moyen de quatre signaux, par cellule H3 d'environ 250 km². C'est un outil de tri, pas une preuve.</li>
+            </ol>
+            <p>Tous les seuils sont réunis dans un seul fichier de configuration, et l'ensemble tourne en une quarantaine de minutes sur un portable pour la semaine d'étude.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/ais-couverture-vigilance.jpg" alt="Deux cartes : couverture AIS à terre mesurée à partir du trafic, et indice de vigilance par cellule H3 dans les détroits danois et le bassin de Bornholm" class="portfolio-image">
+                <figcaption>Couverture du réseau côtier mesurée sur le trafic, et indice de vigilance : où regarder en premier</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Un contrôle indépendant par le radar</h2>
+            <p>Global Fishing Watch publie des détections radar Sentinel-1 rapprochées de l'AIS. Chaque détection est datée à la minute et confrontée au réseau danois. Si la carte de couverture est juste, la part de navires que le réseau a bien reçus doit baisser là où elle est jugée mauvaise, et c'est ce qui se produit :</p>
+            <table>
+                <thead>
+                    <tr><th>Couverture de la cellule</th><th>Navires vus au radar</th><th>Part reçue par le réseau danois</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Fiable</td><td>1 775</td><td>99,3 %</td></tr>
+                    <tr><td>Dégradée</td><td>91</td><td>81,3 %</td></tr>
+                    <tr><td>Trafic insuffisant</td><td>56</td><td>71,4 %</td></tr>
+                    <tr><td>Mauvaise</td><td>177</td><td>51,4 %</td></tr>
+                </tbody>
+            </table>
+            <p>Sur les 238 détections sans AIS, 28 sont dans des parcs éoliens (exclus des sorties), 26 sont près d'un navire silencieux dans l'AIS à cette minute, et 72 sont uniquement radar en eaux bien couvertes. Trois des 11 silences inexpliqués ont eu lieu pendant un passage du satellite.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Ponctuel ou chronique ? Quatre semaines</h2>
+            <p>La même chaîne a tourné sans modification sur trois semaines précédentes.</p>
+            <table>
+                <thead>
+                    <tr><th>Semaine du</th><th>Navires</th><th>Silences AIS</th><th>Inexpliqués</th><th>Trafic en eaux bien couvertes</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>22 septembre</td><td>3 156</td><td>4 974</td><td>4</td><td>89,6 %</td></tr>
+                    <tr><td>29 septembre</td><td>3 136</td><td>4 927</td><td>7</td><td>88,9 %</td></tr>
+                    <tr><td>6 octobre</td><td>2 837</td><td>3 836</td><td>11</td><td>91,9 %</td></tr>
+                    <tr><td>13 octobre (étude)</td><td>2 894</td><td>3 880</td><td>11</td><td>91,3 %</td></tr>
+                </tbody>
+            </table>
+            <p>Les zones d'ombre sont structurelles : 168 cellules H3 (5 120 km²) sont mal couvertes au moins trois semaines sur quatre, dont 109 en eaux allemandes, 37 en suédoises et 22 en polonaises, et aucune en eaux danoises. Les silences inexpliqués, eux, ne se répètent pas : 33 en quatre semaines, pour 30 navires différents.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/ais-fiche-skagen.jpg" alt="Fiche de zone des rades de Skagen : rencontres navire à navire au large de la pointe nord du Danemark" class="portfolio-image">
+                <figcaption>Les rades de Skagen : 45 des 47 rencontres en mer</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/ais-fiche-zee-allemande.jpg" alt="Fiche de zone de la zone économique exclusive allemande : silences, doubles identités et passages sur câbles" class="portfolio-image">
+                <figcaption>La zone économique exclusive allemande, qui compte 109 des 168 cellules structurellement mal couvertes</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Une carte web et un outil QGIS</h2>
+            <p>La carte web, en anglais et en français, est une page statique (MapLibre GL JS qui lit des fichiers GeoJSON). Elle propose quatre histoires guidées : un angle mort que le satellite confirme, un navire de pêche silencieux et un écho radar, une identité partagée par deux émetteurs (deux de ces cas sont rejoués heure par heure, avec une barre de temps), et la comparaison sur quatre semaines. Elle peut aussi produire une fiche de zone sans QGIS, pour une zone dessinée à la main, avec Turf.js et h3-js : PDF imprimable, CSV, GeoJSON et lien qui rouvre la zone.</p>
+            <p>Le projet QGIS regroupe les couches par thème, six thèmes de carte, sept repères spatiaux et deux mises en page (la fiche de zone et la vue analyste). L'outil « Produire une fiche de zone » s'ajoute à la boîte à outils de traitements et se lance aussi en lot. Contrôlé sur les cinq zones de l'atlas, il donne des comptes de signaux identiques à la chaîne complète ; le nombre de navires est inférieur de 1 à 2,5 %, et la part de couverture peut différer de 8 points au plus dans les zones côtières à grands ports.</p>
+            <p>Pour l'installer, dans QGIS : <strong>Extensions</strong>, <strong>Installer depuis un ZIP</strong>, puis choisir le fichier téléchargé.</p>
+            <a href="../downloads/what-ais-fiche-zone-1.0.0.zip" class="btn" download>
+                <i class="fa-solid fa-download"></i> Télécharger l'outil QGIS (8 Ko)
+            </a>
+            <a href="https://github.com/jauresmas/what-ais-doesnt-show/blob/main/sorties/fiches/zone-sheets.pdf" class="btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-file-pdf"></i> Les cinq fiches de zone (PDF, 6 Mo)
+            </a>
+        </div>
+
+        <div class="project-section">
+            <h2>Contrôle qualité</h2>
+            <p>Les règles de classement sont testées sans base de données. Les données publiées sont vérifiées (cohérence des fichiers, aucun MMSI ni identifiant), la carte web est testée dans un navigateur sans interface, et l'outil QGIS est empaqueté puis essayé de bout en bout. Ces contrôles se lancent à chaque envoi de code, avec GitHub Actions.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Limites</h2>
+            <p>Au-delà des eaux danoises, la couverture repose sur une réception à longue portée qui varie avec la météo. Les tracés de câbles et de pipelines sont indicatifs. Un silence inexpliqué peut venir d'un émetteur ou d'une antenne défaillante : les indicateurs montrent où regarder, pas ce qui s'est passé. Quatre semaines d'automne ne permettent pas de séparer les effets saisonniers. La suite logique est une saison entière de données et les détections radar pour les semaines de comparaison.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Consulter le projet</h2>
+            <p>La carte web et le dépôt complet (scripts Python et SQL, projet QGIS, outil, méthode et sources) sont en accès libre. Les données sont ouvertes, sous la licence de chaque producteur, dont deux licences non commerciales (TeleGeography et Global Fishing Watch).</p>
+            <a href="https://jauresmas.github.io/what-ais-doesnt-show/carte/" class="btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Ouvrir la carte web
+            </a>
+            <a href="https://github.com/jauresmas/what-ais-doesnt-show" class="btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i> Voir le code sur GitHub
+            </a>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaur%C3%A8s-daa-hingbanon-aa8a7517a/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Projet personnel indépendant, données ouvertes sous la licence de leur producteur.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>

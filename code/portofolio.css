@@ -1319,13 +1319,15 @@ footer .copyright{
     text-shadow: 0 0 8px var(--main-color);
 }
 
-.project-section ol {
+.project-section ol,
+.project-section ul {
     font-size: 1.6rem;
     line-height: 1.7;
     padding-left: 2.2rem;
 }
 
-.project-section ol li {
+.project-section ol li,
+.project-section ul li {
     margin-bottom: 0.6rem;
 }
 
