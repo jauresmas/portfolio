@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>État initial de l'environnement, outil SIG et atlas automatisé | Jaurès DAA-HINGBANON</title>
+    <meta name="description" content="Criblage de 96 friches dans PostGIS, atlas automatisé de 18 cartes A3 et extension QGIS pour l'état initial d'un projet photovoltaïque dans le Douaisis.">
+    <link rel="canonical" href="https://jauresmas.github.io/portfolio/projets/etat-initial-environnement-douaisis.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="État initial de l'environnement, outil SIG et atlas automatisé | Jaurès DAA-HINGBANON">
+    <meta property="og:description" content="Criblage de 96 friches dans PostGIS, atlas automatisé de 18 cartes A3 et extension QGIS pour l'état initial d'un projet photovoltaïque dans le Douaisis.">
+    <meta property="og:url" content="https://jauresmas.github.io/portfolio/projets/etat-initial-environnement-douaisis.html">
+    <meta property="og:image" content="https://jauresmas.github.io/portfolio/img/projets/douaisis-planche-concertation.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="État initial de l'environnement, outil SIG et atlas automatisé | Jaurès DAA-HINGBANON">
+    <meta name="twitter:description" content="Criblage de 96 friches dans PostGIS, atlas automatisé de 18 cartes A3 et extension QGIS pour l'état initial d'un projet photovoltaïque dans le Douaisis.">
+    <meta name="twitter:image" content="https://jauresmas.github.io/portfolio/img/projets/douaisis-planche-concertation.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+    <link rel="stylesheet" href="../code/portofolio.css?v=8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../img/icons8-favicon-94.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "État initial de l'environnement, outil SIG et atlas automatisé",
+      "description": "Criblage de 96 friches dans PostGIS, atlas automatisé de 18 cartes A3 et extension QGIS pour l'état initial d'un projet photovoltaïque dans le Douaisis.",
+      "url": "https://jauresmas.github.io/portfolio/projets/etat-initial-environnement-douaisis.html",
+      "image": "https://jauresmas.github.io/portfolio/img/projets/douaisis-planche-concertation.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Jaurès DAA-HINGBANON",
+        "url": "https://jauresmas.github.io/portfolio/"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div id="particle-container"></div>
+    <header class="header">
+        <a href="../index.html" class="logo">Jaurès DAA-HINGBANON</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="../projets.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux projets</a>
+        </nav>
+    </header>
+
+    <main class="project-page">
+        <div class="project-hero">
+            <p class="project-tag">Environnement · Étude d'impact · PostgreSQL/PostGIS · Python · PyQGIS · QGIS · Projet personnel, 2026</p>
+            <h1>État initial de l'environnement</h1>
+            <p class="project-subtitle">De la friche au dossier : une chaîne de traitement qui produit l'atlas de 18 cartes d'un état initial, et une extension QGIS réutilisable</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Contexte et objectif</h2>
+            <p>Avant un projet soumis à étude d'impact, le bureau d'études décrit le site et ses abords : milieux naturels, eau, sols, risques, paysage, urbanisme, foncier, voisinage. La plupart des cartes reviennent d'un dossier à l'autre. Ce projet automatise cette partie du travail, de la recherche du site jusqu'aux livrables.</p>
+            <p>Le cas d'étude est une centrale photovoltaïque au sol dans le Douaisis (Nord). C'est une étude indépendante, réalisée uniquement à partir de données ouvertes et sans lien avec un porteur de projet : elle n'engage ni la collectivité ni un développeur. Elle sert à montrer un outil et une méthode, pas à conclure sur un projet réel.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/douaisis-planche-concertation.jpg" alt="Planche de concertation réalisée avec Inkscape : le site de 3,9 ha de l'ancien dépôt d'hydrocarbures, cinq points d'attention et les suites de l'étude" class="portfolio-image">
+                <figcaption>Planche de concertation pour une réunion publique, retouchable dans Inkscape</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Choisir le site : le criblage des friches</h2>
+            <p>Le criblage est écrit en SQL dans PostGIS. Chacune des 96 friches de Douaisis Agglo est exclue, pénalisée ou favorisée selon 17 critères, pilotés par une table de règles. Une seule est classée favorable : un ancien dépôt d'hydrocarbures de 3,9 ha, qui devient le site étudié. Quinze friches de plus de 3 ha, déjà reconverties, sont écartées par l'usage de l'OCS GE.</p>
+            <p>Ce critère « site déjà reconverti » est né d'une erreur détectée à temps. Le premier site retenu était une plateforme logistique construite entre 2021 et 2025, que la photographie aérienne et l'OCS GE différentielle ont révélée. Le résultat final est frappant : le PLU de la commune classe déjà 98 % du site en secteur UEpv, destiné aux installations d'une centrale photovoltaïque. Conduit avec les seules données ouvertes, le criblage retrouve un choix déjà inscrit par la collectivité.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/douaisis-criblage-friches.png" alt="Carte du criblage des 96 friches de Douaisis Agglo pour une centrale photovoltaïque : une favorable, huit défavorables, 87 exclues" class="portfolio-image" style="max-height:640px;object-fit:contain;background:#fff;">
+                <figcaption>Criblage des 96 friches : une favorable, huit défavorables, 87 exclues</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Démarche en cinq étapes</h2>
+            <ol>
+                <li><strong>Référentiel territorial</strong> : Douaisis Agglo et une marge de 5 km, soit 36 couches et 65 000 objets chargés dans PostGIS avec leur empreinte de contrôle.</li>
+                <li><strong>Criblage</strong> des friches par la vue SQL décrite ci-dessus.</li>
+                <li><strong>Collecte</strong> : les couches sont interrogées sur trois aires d'étude, immédiate (200 m), rapprochée (1 km) et éloignée (5 km), à partir d'une cinquantaine de sources ouvertes. L'OCS GE est prise sur chaque département touché, le Nord (2025) et le Pas-de-Calais (2024).</li>
+                <li><strong>Analyses et enjeux</strong> : inventaire des zonages, occupation du sol et son évolution, urbanisme, servitudes, foncier, risques, réseaux et espèces avec leurs statuts. Une grille classe 27 sujets de « nul » à « très fort » : 2 forts, 6 modérés, 9 faibles et 10 nuls. Chaque règle est écrite dans le tableur.</li>
+                <li><strong>Livrables</strong> : atlas, note méthodologique, données, tableur, projet QField, planche de concertation et carte web.</li>
+            </ol>
+            <p>Dans l'aire rapprochée, 395 espèces sont déjà connues, dont 34 protégées et 20 patrimoniales. Les données de GBIF sont opportunistes : elles orientent les inventaires, elles ne les remplacent pas.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/douaisis-site-photographie-aerienne.jpg" alt="Carte du site sur photographie aérienne avec la zone d'implantation potentielle et l'aire d'étude immédiate" class="portfolio-image">
+                <figcaption>Le site sur photographie aérienne, avec son aire d'étude immédiate</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/douaisis-synthese-enjeux.jpg" alt="Carte de synthèse des enjeux spatialisés autour du site, hiérarchisation indicative" class="portfolio-image">
+                <figcaption>Synthèse des enjeux spatialisés : une hiérarchisation indicative</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Trois sources d'occupation du sol, comparées</h2>
+            <p>L'OCS GE, Corine Land Cover et l'OSO du CESBIO (produite par apprentissage profond et lue en flux, 5,6 Go pour la France) ne racontent pas la même histoire sur un même site. Je les ai ramenées à six classes communes pour mesurer leur accord, avec l'indice kappa de Cohen, et confronter leurs résultats à l'échelle du projet.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/douaisis-trois-sources-occupation-sol.jpg" alt="Carte comparant l'occupation du sol de l'OCS GE, de Corine Land Cover et de l'OSO, avec la concordance des trois sources" class="portfolio-image">
+                <figcaption>OCS GE, Corine Land Cover et OSO côte à côte, et leur concordance</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/douaisis-zonage-prescriptions-plu.jpg" alt="Carte du zonage et des prescriptions du plan local d'urbanisme autour du site, au standard CNIG" class="portfolio-image">
+                <figcaption>Zonage et prescriptions du PLU, lus au standard CNIG sur le Géoportail de l'Urbanisme</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/douaisis-graphique-trois-sources.png" alt="Graphique de la répartition des surfaces par classe d'occupation du sol dans l'aire rapprochée selon l'OSO, l'OCS GE et Corine Land Cover" class="portfolio-image">
+                <figcaption>Surface de chaque classe dans l'aire rapprochée, selon les trois sources</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Un atlas de 18 cartes au même gabarit</h2>
+            <p>La bibliothèque Python compose l'atlas A3 avec PyQGIS. Chaque planche suit un gabarit unique : titre, encadré des enjeux, légende filtrée, carte de situation, échelle et sources. Les 18 cartes couvrent la localisation, les milieux naturels, l'eau, l'occupation du sol, l'urbanisme, les servitudes, le foncier, le patrimoine, les risques, les réseaux, les données naturalistes et la synthèse des enjeux.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/douaisis-occupation-sol.jpg" alt="Planche A3 de l'occupation du sol OCS GE 2024 et 2025 autour du site" class="portfolio-image">
+                <figcaption>Occupation du sol (OCS GE 2024 et 2025)</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/douaisis-risques.jpg" alt="Planche A3 des risques naturels, miniers et technologiques autour du site" class="portfolio-image">
+                <figcaption>Risques naturels, miniers et technologiques</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>QGIS et Python, deux voies qui se recoupent</h2>
+            <p>Les traitements ont d'abord été faits avec les outils de QGIS : tampons, jointure par plus proche voisin, intersections, statistiques par catégorie, mises en page et atlas. Trois modèles du modeleur graphique enchaînent les calculs clés (aires d'étude, position des zonages, occupation du sol par aire) et sont intégrés au projet.</p>
+            <p>Les mêmes traitements sont reproduits en Python : la chaîne relance toute l'étude en une commande, en sept minutes environ une fois les données téléchargées. Un contrôle croisé compare les deux voies : au plus 0,03 ha d'écart sur les aires d'étude, 0,3 m sur les distances de zonage et 0,01 ha sur les surfaces d'occupation du sol. Le code compte environ 5 600 lignes et 17 tests automatiques.</p>
+        </div>
+
+        <div class="project-figures">
+            <figure class="project-figure">
+                <img src="../img/projets/douaisis-modele-aires-etude.png" alt="Modèle du modeleur graphique QGIS qui produit les trois aires d'étude d'un projet à partir de la zone d'implantation" class="portfolio-image">
+                <figcaption>Modèle QGIS : les trois aires d'étude d'un projet</figcaption>
+            </figure>
+            <figure class="project-figure">
+                <img src="../img/projets/douaisis-modele-occupation-sol.png" alt="Modèle du modeleur graphique QGIS qui calcule l'occupation du sol par aire d'étude" class="portfolio-image">
+                <figcaption>Modèle QGIS : l'occupation du sol par aire d'étude</figcaption>
+            </figure>
+        </div>
+
+        <div class="project-section">
+            <h2>Une extension QGIS pour n'importe quel périmètre</h2>
+            <p>L'extension « État initial » applique la même méthode à tout polygone de France métropolitaine, même si certaines couches régionales restent propres aux Hauts-de-France. L'algorithme <em>Produire l'état initial d'un périmètre</em> prend un polygone, un type de projet (photovoltaïque, éolien ou aménagement) et un dossier, puis produit le GeoPackage, le projet QGIS et les 18 planches. Elle a été essayée sur une autre friche du territoire.</p>
+            <p>Pour l'installer, dans QGIS : <strong>Extensions</strong>, <strong>Installer depuis un ZIP</strong>, puis choisir le fichier téléchargé.</p>
+            <a href="../downloads/etat-initial-qgis-1.0.0.zip" class="btn" download>
+                <i class="fa-solid fa-download"></i> Télécharger l'extension QGIS (60 Ko)
+            </a>
+            <a href="https://github.com/jauresmas/etat-initial-douaisis/releases/download/v1.0.0/Atlas_etat_initial.pdf" class="btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-file-pdf"></i> Atlas complet (PDF, 17 Mo)
+            </a>
+        </div>
+
+        <div class="project-section">
+            <h2>Terrain et veille</h2>
+            <p>Le projet QField des inventaires (observations, habitats EUNIS, liste des espèces connues) se copie sur une tablette. Au retour, un script contrôle les relevés (champs obligatoires, date, position, doublons) et verse les relevés valides dans la base, où un déclencheur refuse toute observation hors de l'aire d'étude. Les anomalies sont listées dans un rapport.</p>
+            <p>Un script de veille compare chaque couche au flux de son producteur et journalise les changements. Avec une option, il recharge les couches modifiées et recalcule le criblage.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Limites</h2>
+            <p>La hiérarchisation des enjeux est indicative. Les inventaires de la faune et de la flore sur un cycle complet et la délimitation des zones humides (sol et végétation) restent indispensables. Les fichiers fonciers ne sont pas ouverts : en mission, ils s'obtiennent sous convention, et les propriétaires privés ne sont pas nommés ici. Les aires d'étude sont des distances fixes : une analyse de visibilité sur un modèle de terrain affinerait l'aire éloignée pour le paysage.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Consulter le projet</h2>
+            <p>La carte web, la note méthodologique de 7 pages et le dépôt complet (scripts Python et SQL, extension, livrables) sont en accès libre.</p>
+            <a href="https://jauresmas.github.io/etat-initial-douaisis/" class="btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Ouvrir la carte web
+            </a>
+            <a href="https://github.com/jauresmas/etat-initial-douaisis" class="btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i> Voir le code sur GitHub
+            </a>
+            <a href="https://github.com/jauresmas/etat-initial-douaisis/blob/main/livrables/01_Documents/01_Note_methodologique.pdf" class="btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-file-pdf"></i> Note méthodologique (PDF)
+            </a>
+        </div>
+
+        <a href="../projets.html" class="btn project-back-btn">← Retour aux projets</a>
+    </main>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/jauresmas" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaur%C3%A8s-daa-hingbanon-aa8a7517a/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright" style="margin-top:1rem;">
+            Étude indépendante, code sous licence MIT, données en Licence Ouverte 2.0 ou sous la licence de leur producteur.
+        </p>
+        <p class="copyright">
+            © Jaurès DAA-HINGBANON | All Right Reserved
+        </p>
+    </footer>
+
+    <script src="../code/particles.min.js"></script>
+    <script src="../code/portofolio.js"></script>
+</body>
+</html>
